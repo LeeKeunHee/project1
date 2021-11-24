@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/* 어드민 헤더 영역 */
+   .wrap { width: 100%; }
+    .hd { width: 100%; background:white; height:120px;  
+     top: 0; left: 0; z-index:999; }
+    .hd_wrap { clear:both; width: 1000px; margin:0 auto; }  
+    .tnb { width: 100%; }
+    .logo { display:block; position:absolute;  top:10px; left:50%; margin-left:-50px; }
+    .tnb .right { float:right; font-family: 'Noto Sans KR', sans-serif; }
+    .tnb li { float:left; margin-top: 20px; }
+    .tnb .right li { margin-left: 20px; }
+    .tnb li a { color:#333; font-size:16px; }
+    .gnb { clear:both; width: 100%; }
+    .gnb > ul > li { float:left; margin-top: 36px; width: 20%; position:relative; 
+    }
+    .gnb li a.dp1 { display:block; height: 42px; line-height: 42px; color:#fff;
+    text-align:center; background-color:#333; font-family: 'Noto Sans KR', sans-serif; }
+    .gnb li:hover a.dp1 { background-color:#fff; color:#333; font-family: 'Noto Sans KR', sans-serif; }
+    .gnb li .sub { visibility:hidden; opacity:0; transition:0.5s; 
+    position:absolute; z-index:9999; width: 200px;  }
+    .gnb li:hover .sub { visibility: visible; opacity:1; }
+    .gnb .sub li { clear:both; height: 40px; line-height: 40px; }
+    .gnb .sub li a { display:block; height: 40px; line-height: 40px; color:#fff; background:#333; padding-left:20px; }
+    .gnb .sub li:hover a { color:red; }
+
+/* 푸터 영역 */
+.ft { clear:both; width: 100%; background-color: #222; 
+color:#fff; height: 80px; padding-top: 20px; }
+.ft_wrap { width: 1000px; margin: 0 auto;  }

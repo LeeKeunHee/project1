@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+     <style>
+    * { margin: 0; padding: 0; }
+    body, html { width: 100%; }
+    ul { list-style: none; }
+    a { text-decoration: none; }  
+    </style>
+    <link rel="stylesheet" href="./css/ban.css">
+    <link rel="stylesheet" href="./css/a_common.css">
+    <link rel="stylesheet" href="./css/p_main.css">
+    <style>
+     
+    .content { clear:both; width: 100%; min-height:2000px; }    
+
+    </style>
+    <style>
+    /* 내부 스타일 */
+    .frm fieldset { width:600px; border-style:none; padding:10px; margin:20px auto; } 
+    .frm > fieldset > li { list-style:none;  } 
+    .con_tit { font-family: 'Noto Sans KR', sans-serif; }
+    .indata { display:block; width:600px; height:48px; line-height:48px; text-indent:16px; 
+    margin:30px auto; }
+    .btn_fr { width:600px; }
+    .btn_fr li:first-child { float:left; }
+    .btn_fr li:last-child { float:right; }
+    .inbtn { display:block; width:240px; height:48px; line-height:48px; text-align:center; 
+    background-color:#FF7171; color:#333; border:0; outline:0; border-radius:28px; }
+    .inbtn:hover { background-color:#FF9595; }
+    </style>
+</head>
+<body>
+      <div class="wrap">
+        <header class="hd">
+            <div class="hd_wrap">
+                <nav class="tnb">
+                    <a href="p_index.jsp" class="logo">
+                        <img src="./img/logo.png" alt="앰블럼이미지">
+                    </a>
+                    <ul class="right">
+                        <li><a href="p_login.html">로그인</a></li>
+                        <li><a href="p_join.jsp">회원가입</a></li>
+                        <li><a href="sitemap.html">사이트맵</a></li>
+                    </ul>
+                </nav>
+            </div>
+         <div class="hd_wrap">
+                <nav class="gnb">
+                    <ul>
+                        <li>
+                            <a href="" class="dp1">공지사항</a>
+                            <ul class="sub">
+                                <li><a href="p_company.html">공지사항</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="" class="dp1">회사소개</a>
+                            <ul class="sub">
+                                <li><a href="p_company.html">회사소개</a></li>
+                                <li><a href="">찾아 오시는 길</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="" class="dp1">제품소개</a>
+                            <ul class="sub">
+                                <li><a href="">파이류</a></li>
+                                <li><a href="">스낵류</a></li>
+                                <li><a href="">비스킷류</a></li>
+                                <li><a href="">껌류</a></li>
+                                <li><a href="">캔디류</a></li>
+                                <li><a href="">초콜릿류</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="" class="dp1">신제품 소개</a>
+                            <ul class="sub">
+                                <li><a href="">신제품 / 리뉴얼 소개</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="" class="dp1">고객문의</a>
+                            <ul class="sub">
+                                <li><a href="">고객문의</a></li>
+                                <li><a href="">영업소 위치</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+        <section class="content" style="background-color: #fff;">
+			<h1 class="con_tit">로그인</h1>
+			<form action="p_login.jsp" method="post" class="frm">
+				<fieldset>
+					<li>아이디</li>
+					<input type="text" class="indata" id="m_id" name="m_id" placeholder="아이디 입력" autofocus required />
+					<li>비밀번호</li>
+					<input type="password" class="indata" id="m_pw" name="m_pw" placeholder="비밀번호 입력" required />
+					<br /><br />
+					<ul class="btn_fr">
+						<li><input type="submit" class="inbtn" value="로그인"/></li>
+						<li><input type="reset" class="inbtn" value="취소"/></li>
+					</ul>
+				</fieldset>
+			</form>
+        </section>
+    
+    </div>
+</body>
+</html>
