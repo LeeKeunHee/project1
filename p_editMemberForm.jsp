@@ -70,20 +70,20 @@ cursor:pointer; }
             <input type="text" id="m_birth1" name="m_birth1" class="in_data2" maxlength="4" placeholder="년(4자)" value="<%=mem.getM_birth1() %>"/>
          </span>
          <span class="lb_data">
-               <select id="m_birth2" name="m_birth2" class="in_data3" value="<%=mem.getM_birth2() %>">
-                   <option></option>
-                    <option value="01">1</option>
-                    <option value="02">2</option>
-                    <option value="03">3</option>
-                    <option value="04">4</option>
-                    <option value="05">5</option>
-                    <option value="06">6</option>
-                    <option value="07">7</option>
-                    <option value="08">8</option>
-                    <option value="09">9</option>                                    
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>               
+               <select id="m_birth2" name="m_birth2" class="in_data3">
+                   <%
+                   	for(int i=1;i<13;i++){
+                   		if(mem.getM_birth2()==i) {
+                   %>
+                    	<option value="<%=i%>" selected><%=i %></option>                   
+                   <%
+                   		} else {
+                   %>
+                   		<option value="<%=i%>"><%=i %></option>
+                   <%			
+                   		}
+                   	}
+                   %>
                  </select>
               </span>
               <span class="lb_data">

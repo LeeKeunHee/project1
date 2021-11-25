@@ -44,9 +44,9 @@ th, td{display:table=cell;}
 	
 %>
 		<tr>
-			<td class="item1"><a href="EditNewProductFormCtrl?id=<%=newProduct.getN_num() %>"><%=newProduct.getN_num() %></a></td>	
+			<td class="item1"><%=newProduct.getN_num() %></td>	
 			<td class="item2"><%=newProduct.getN_name() %></td>	
-			<td class="item3"><%=newProduct.getN_kind() %></td>
+			<td class="item3"><a href=""><%=newProduct.getN_kind() %></a></td>
 			<td class="item4"><%=newProduct.getN_price() %></td>
 			<td> <img src="<%=newProduct.getN_img() %>" alt=""></td>
 				

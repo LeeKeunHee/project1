@@ -125,10 +125,10 @@ h1 {
 					id="p_name" class="in_data" placeholder="이름 입력" required /></td>
 			</tr>
 			<tr>
-				<th class="item_name"><label for="p_price" class="lb rep">첨부파일</label>
+				<th class="item_name"><label for="p_price" class="lb rep">가격</label>
 				</th>
 				<td class="item_val"><input type="text" name="p_price"
-					id="p_price" class="in_data" placeholder="첨부파일"  /></td>
+					id="p_price" class="in_data" placeholder="가격 입력" required /></td>
 			</tr>
 		</table>
 		<span class="fr_col first"> <input type="submit" value="공지사항등록"

@@ -55,7 +55,7 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
 				<td class="item2"><%=product.getP_name() %></td>	
 				<td class="item3"><%=product.getP_kind() %></td>
 				<td class="item4"><%=product.getP_price() %></td>
-				<td> <img src='./img/<%=product.getP_img() %>' alt=""></td>
+				<td> <img src="<%=product.getP_img() %>" alt=""></td>
 				<td class="item6"><input type="checkbox"  name="ck"  id="ck<%=i %>"  
 		class="ck_item" value="<%=product.getP_num() %>"/></td>
 				
