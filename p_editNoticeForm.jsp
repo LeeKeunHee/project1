@@ -4,7 +4,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.orion.model.NoticeDAO" %>
 <%
-	NoticeDAO notice = (NoticeDAO) request.getAttribute("notice");
+   NoticeDAO notice = (NoticeDAO) request.getAttribute("notice");
 %>
 <!DOCTYPE html>
 <html>
@@ -33,64 +33,72 @@ input[readonly] { background:#f1f1f1; }
 </head>
 <body>
 <h2 class="tit">공지사항 수정</h2>
-<form action="EditNoticeCtrl" method="post" id="frm" name="frm">
-	<table class="tb">
-		<tbody>
-			<tr>
-				<th class="col_hd">
-					<label for="n_num">번호</label>
-				</th>
-				<td class="col_data">
-					<input type="text" id="n_num" name="n_num" class="in_data" value="<%=notice.getN_num() %>" readonly required />
-				</td>
-			</tr>
-			<tr>
-				<th class="col_hd">
-					<label for="n_name" >작성자</label>
-				</th>
-				<td class="col_data">
-					<input type="text" id="n_name" name="n_name" class="in_data" value="<%=notice.getN_name() %>" readonly />
-				</td>
-			</tr>
-			<tr>
-				<th class="col_hd">
-					<label for="n_title">공지사항 제목</label>
-				</th>
-				<td class="col_data">
-					<input type="text" id="n_title" name="n_title" class="in_data" value="<%=notice.getN_title() %>" />
-				</td>
-			</tr>
-			<tr>
-				<th class="col_hd">
-					<label for="ubirth">공지사항 내용</label>
-				</th>
-				<td class="col_data">
-					<input type="text" id="n_sub" name="n_sub" class="in_data" value="<%=notice.getN_sub() %>"/>
-				</td>
-			</tr>
-			<tr>
-				<th class="col_hd">
-					<label for="uregdate">작성일</label>
-				</th>
-				<td class="col_data">
-					<input type="text" id="n_date" name="n_date" class="in_data" value="<%=notice.getN_date() %>"/>
-				</td>
-			</tr>
-			<tr>
-				<th class="col_hd">
-					<label for="upoint">첨부파일</label>
-				</th>
-				<td class="col_data">
-					<input type="text" id="n_file" name="n_file" class="in_data" value="<%=notice.getN_file() %>"/>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+<form action="EditNoticeCtrl" method="post" id="pform" name="pform">
+   <table class="tb">
+      <tbody>
+         <tr>
+            <th class="col_hd">
+               <label for="n_num">번호</label>
+            </th>
+            <td class="col_data">
+               <input type="text" id="n_num" name="n_num" class="in_data" value="<%=notice.getNum() %>" readonly required />
+            </td>
+         </tr>
+         <tr>
+            <th class="col_hd">
+               <label for="n_name" >공지사항 번호</label>
+            </th>
+            <td class="col_data">
+               <input type="text" id="n_id" name="n_id" class="in_data" value="<%=notice.getN_id() %>" readonly />
+            </td>
+         </tr>
+         <tr>
+            <th class="col_hd">
+               <label for="n_name" >작성자</label>
+            </th>
+            <td class="col_data">
+               <input type="text" id="n_name" name="n_name" class="in_data" value="<%=notice.getN_name() %>" readonly />
+            </td>
+         </tr>
+         <tr>
+            <th class="col_hd">
+               <label for="n_title">공지사항 제목</label>
+            </th>
+            <td class="col_data">
+               <input type="text" id="n_title" name="n_title" class="in_data" value="<%=notice.getN_title() %>" />
+            </td>
+         </tr>
+         <tr>
+            <th class="col_hd">
+               <label for="ubirth">공지사항 내용</label>
+            </th>
+            <td class="col_data">
+               <input type="text" id="n_sub" name="n_sub" class="in_data" value="<%=notice.getN_sub() %>"/>
+            </td>
+         </tr>
+         <tr>
+            <th class="col_hd">
+               <label for="uregdate">작성일</label>
+            </th>
+            <td class="col_data">
+               <input type="text" id="n_date" name="n_date" class="in_data" value="<%=notice.getN_date() %>"/>
+            </td>
+         </tr>
+         <tr>
+            <th class="col_hd">
+               <label for="upoint">첨부파일</label>
+            </th>
+            <td class="col_data">
+               <input type="text" id="n_file" name="n_file" class="in_data" value="<%=notice.getN_file() %>"/>
+            </td>
+         </tr>
+      </tbody>
+   </table>
     <hr />
-	<div class="btn_wrap">	
-		<button type="submit" class="in_btn" onclick="">수정</button>
-		<button type="reset" class="in_btn" onclick="">취소</button>
-	</div>	
+   <div class="btn_wrap">   
+      <button type="submit" class="in_btn" onclick="">수정</button>
+      <button type="reset" class="in_btn" onclick="">취소</button>
+   </div>   
 </form>
  
 </body>

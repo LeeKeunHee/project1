@@ -35,7 +35,7 @@ public class deleteNoticeCtrl extends HttpServlet {
 		int cnt = 0;
 		for(int i=0; i<ck.length; i++) {
 			//sql 구문, 상태처리, 실행문
-			sql = "delete from notice where n_num=?";
+			sql = "delete from notice where n_id=?";
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, ck[i]);
 			cnt ++;

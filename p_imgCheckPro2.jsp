@@ -28,9 +28,9 @@
       function apply(id){
          //opener 부모창
          //opener.document.폼이름.컨트롤이름.value
-         opener.document.pform.n_img.value=id;
+         opener.document.nform.n_img.value=id;
          //opener.document.joinform.m_id.readonly=true;
-         opener.document.pform.imgck.value="yes";
+         opener.document.nform.imgck.value="yes";
          window.close();
       }
       </script>

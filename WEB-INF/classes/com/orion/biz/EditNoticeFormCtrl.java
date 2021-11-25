@@ -21,6 +21,7 @@ public class EditNoticeFormCtrl extends HttpServlet {
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String n_num = request.getParameter("id");
+		String num = request.getParameter("num");
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -31,7 +32,7 @@ public class EditNoticeFormCtrl extends HttpServlet {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(url, db_id, db_pw);
-			sql = "select * from notice where n_num=?";
+			sql = "select * from notice where n_id=?";
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, n_num);
 			rs = stmt.executeQuery();
@@ -39,11 +40,13 @@ public class EditNoticeFormCtrl extends HttpServlet {
 			
 			if(rs.next()) {
 				notice.setN_num(rs.getInt("n_num"));
+				notice.setN_id(rs.getString("n_id"));
 				notice.setN_name(rs.getString("n_name"));
 				notice.setN_title(rs.getString("n_title"));
 				notice.setN_sub(rs.getString("n_sub"));
 				notice.setN_date(rs.getDate("n_date"));
 				notice.setN_file(rs.getString("n_file"));
+				notice.setNum(num);
 			} else {
 				response.sendRedirect("NoticeListCtrl");
 			}

@@ -102,46 +102,46 @@ h1 {
 	<%@ include file="p_admin_header.jsp"%>
 	<h1>신제품 등록</h1>
 	<!-- 상품 등록 폼 -->
-	<form action="insertProductPro.jsp" class="frm" method="post"
-		name="pform">
+	<form action="AddNewProductCtrl" class="nform" method="post"
+		name="nform">
 		<table class="content">
 			<tr>
-				<th class="item_name"><label for="p_num" class="lb rep">제품코드</label>
+				<th class="item_name"><label for="n_num" class="lb rep">제품코드</label>
 				</th>
-				<td class="item_val"><input type="text" name="p_num" id="p_num"
+				<td class="item_val"><input type="text" name="n_num" id="n_num"
 					class="in_data" placeholder="신제품코드입력" /> <input type="button"
 					value="신제품코드 중복체크" class="in_btn" onclick="codeCheck()" /> <input
 					type="hidden" value="" name="codeck" id="codeck" /></td>
 			</tr>
 			<tr>
-				<th class="item_name"><label for="p_name" class="lb rep">제품명</label>
+				<th class="item_name"><label for="n_name" class="lb rep">제품명</label>
 				</th>
-				<td class="item_val"><input type="text" name="p_name"
-					id="p_name" class="in_data" placeholder="제품명 입력" required /></td>
+				<td class="item_val"><input type="text" name="n_name"
+					id="n_name" class="in_data" placeholder="제품명 입력" required /></td>
 			</tr>
 			<tr>
-				<th class="item_name"><label for="p_kind" class="lb rep">종류</label>
+				<th class="item_name"><label for="n_kind" class="lb rep">종류</label>
 				</th>
-				<td class="item_val"><input type="text" name="p_kind"
-					id="p_kind" class="in_data" placeholder="종류 입력" required /></td>
+				<td class="item_val"><input type="text" name="n_kind"
+					id="n_kind" class="in_data" placeholder="종류 입력" required /></td>
 			</tr>
 			<tr>
-				<th class="item_name"><label for="p_price" class="lb rep">가격</label>
+				<th class="item_name"><label for="n_price" class="lb rep">가격</label>
 				</th>
-				<td class="item_val"><input type="text" name="p_price"
-					id="p_price" class="in_data" placeholder="가격 입력" required /></td>
+				<td class="item_val"><input type="text" name="n_price"
+					id="n_price" class="in_data" placeholder="가격 입력" required /></td>
 			</tr>
 			<tr>
-				<th class="item_name"><label for="p_sub" class="lb rep">내용</label>
+				<th class="item_name"><label for="n_sub" class="lb rep">내용</label>
 				</th>
-				<td class="item_val"><input type="text" name="p_sub" id="p_sub"
+				<td class="item_val"><input type="text" name="n_sub" id="n_sub"
 					class="in_data" placeholder="내용 입력" style="height: 300px;"required /></td>
 			</tr>
 			<tr>
-				<th class="item_name2"><label for="p_img" class="lb rep">이미지</label>
+				<th class="item_name2"><label for="n_img" class="lb rep">이미지</label>
 				</th>
 				<td class="item_val2">
-				<input type="text" name="p_img" id="p_img" class="in_data" /> 
+				<input type="text" name="n_img" id="n_img" class="in_data" /> 
 					<input type="button" value="이미지 업로드" class="in_btn" onclick="imgCheck()" /> 
 					<input type="hidden" value="" name="imgck" id="imgck" /></td>
 			</tr>
@@ -154,11 +154,11 @@ h1 {
 	</form>
 	<script>
 		function codeCheck() {
-			window.open("codeCheckform.jsp", "pcodecheck",
+			window.open("p_codeCheckForm2.jsp", "pcodecheck",
 					"width=300, height=300");
 		}
 		function imgCheck() {
-			window.open("imgCheckform.jsp", "pimgcheck",
+			window.open("p_imgCheckForm2.jsp", "pimgcheck",
 					"width=300, height=300");
 		}
 		function pCheck() {

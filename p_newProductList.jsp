@@ -48,7 +48,7 @@ th, td{display:table=cell;}
 			<td class="item2"><%=newProduct.getN_name() %></td>	
 			<td class="item3"><a href=""><%=newProduct.getN_kind() %></a></td>
 			<td class="item4"><%=newProduct.getN_price() %></td>
-			<td> <img src="<%=newProduct.getN_img() %>" alt=""></td>
+			<td> <img src='./img/<%=newProduct.getN_img() %>' alt=""></td>
 				
 		</tr>
 <%

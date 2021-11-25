@@ -4,7 +4,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.orion.model.NoticeDAO" %>
 <%
-	ArrayList<NoticeDAO> noticeList = (ArrayList<NoticeDAO>) request.getAttribute("noticeList");
+   ArrayList<NoticeDAO> noticeList = (ArrayList<NoticeDAO>) request.getAttribute("noticeList");
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -30,33 +31,35 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
 </head>
 <body>
 <%@ include file = "p_admin_header.jsp" %><br><br><br><br>
-	<h2 class="tit">공지사항 목록</h2>
-	<table class="tb">
-		<thead>
-			<tr>
-				<th class="item1">번호</th>
-				<th class="item2">제목</th>
-				<th class="item3">작성자</th>
-				<th class="item4">작성일시</th>
-			</tr>
-		</thead>		
-		<tbody>
-	
+   <h2 class="tit">공지사항 목록</h2>
+   <table class="tb">
+      <thead>
+         <tr>
+            <th class="item1">번호</th>
+            <th class="item2">공지사항 번호</th>
+            <th class="item3">제목</th>
+            <th class="item4">작성자</th>
+            <th class="item5">작성일시</th>
+         </tr>
+      </thead>      
+      <tbody>
+   
 <%
-	for(int i=0; i<noticeList.size();i++){
-		int a=i+1;
-		NoticeDAO notice = noticeList.get(i);
-	
+   for(int i=0; i<noticeList.size();i++){
+      int a=i+1;
+      NoticeDAO notice = noticeList.get(i);
+   
 %>
-			<tr>
-				<td class="item1"><a href="EditNoticeFormCtrl?id=<%=notice.getN_num() %>"><%=a %></td>	
-				<td class="item2"><%=notice.getN_title() %></a></td>
-				<td class="item3"><%=notice.getN_name() %></td>
-				<td class="item4"><%=notice.getN_date() %></td>
-			</tr>
+         <tr>
+            <td class="item1"><%= a %></td>
+            <td class="item2"><a href="EditNoticeFormCtrl?num=<%=a %>&id=<%=notice.getN_id() %>"><%=notice.getN_id() %></td>   
+            <td class="item3"><%=notice.getN_title() %></a></td>
+            <td class="item4"><%=notice.getN_name() %></td>
+            <td class="item5"><%=notice.getN_date() %></td>
+         </tr>
 <%
-	}
-%>	
+   }
+%>   
 </tbody>
 </table>
 
