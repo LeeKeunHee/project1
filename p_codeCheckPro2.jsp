@@ -35,8 +35,8 @@
 %>
 		<script>
 		function apply(n_num){
-			opener.document.nform.n_num.value=n_num;
-			opener.document.nform.codeck.value="yes";
+			opener.document.npform.n_num.value=n_num;
+			opener.document.npform.codeck.value="yes";
 			window.close();
 		}
 		</script>

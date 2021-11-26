@@ -10,7 +10,7 @@
       try {  
          int maxSize = 1024*1024*10;
          //String saveDirectory = config.getServletContext().getRealPath("/img"); 
-         String saveDirectory = "D:\\lkh\\jsp\\project\\WebContent\\img";
+         String saveDirectory = "D:\\kdh\\jsp\\project\\WebContent\\img";
          MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, "utf-8");      //덮어쓰기
          //MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxSize, "utf-8", new DefaultFileRenamePolicy());   
          originalFile = multi.getOriginalFileName("p_pic");
@@ -28,9 +28,9 @@
       function apply(id){
          //opener 부모창
          //opener.document.폼이름.컨트롤이름.value
-         opener.document.pform.n_file.value=id;
+         opener.document.nform.n_file.value=id;
          //opener.document.joinform.m_id.readonly=true;
-         opener.document.pform.imgck.value="yes";
+         opener.document.nform.imgck.value="yes";
          window.close();
       }
       </script>

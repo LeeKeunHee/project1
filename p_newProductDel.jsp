@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제품 목록</title>
+<title>신제품 삭제 목록</title>
 <link rel="stylesheet" href="./css/reset2.css">
 <link rel="stylesheet" href="./css/a_common.css">
 <style>
@@ -30,7 +30,7 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
 </head>
 <body>
 <%@ include file = "p_admin_header.jsp" %><br><br><br><br>
-	<h2 class="tit">신제품 목록</h2>
+	<h2 class="tit">신제품 삭제 목록</h2>
 	<form action="deleteNewProductCtrl" method="post" name="delForm" onsubmit="return frm_submit(this)">
 	<table class="tb">
 		<thead>
@@ -55,7 +55,7 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
 				<td class="item2"><%=newproduct.getN_name() %></td>	
 				<td class="item3"><%=newproduct.getN_kind() %></td>
 				<td class="item4"><%=newproduct.getN_price() %></td>
-				<td> <img src="<%=newproduct.getN_img() %>" alt=""></td>
+				<td> <img src='./img/<%=newproduct.getN_img() %>' alt=""></td>
 				<td class="item6"><input type="checkbox"  name="ck"  id="ck<%=i %>"  
 		class="ck_item" value="<%=newproduct.getN_num() %>"/></td>
 				

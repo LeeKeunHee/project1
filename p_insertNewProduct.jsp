@@ -103,7 +103,7 @@ h1 {
 	<h1>신제품 등록</h1>
 	<!-- 상품 등록 폼 -->
 	<form action="AddNewProductCtrl" class="nform" method="post"
-		name="nform">
+		name="npform">
 		<table class="content">
 			<tr>
 				<th class="item_name"><label for="n_num" class="lb rep">제품코드</label>

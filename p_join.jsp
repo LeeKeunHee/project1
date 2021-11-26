@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/p_reset.css">
-<link rel="stylesheet" href="./css/p_common.css">
-<link rel="stylesheet" href="./css/p_main.css">
+<link rel="stylesheet" href="./css/reset2.css">
+<link rel="stylesheet" href="./css/a_common.css">
+\
 <style>
 input { outline:0; border:0;  border-radius:0;  }
 .fr { clear:both; width:960px; margin:10px auto; margin-bottom:80px;    }
@@ -28,9 +28,9 @@ padding-left:150px; color:#222; font-weight:bold; font-family: 'Gothic A1', sans
 .in_data { display:block; float:left; border:1px solid #333; width:400px; height:40px; line-height:40px; padding-left:20px; }
 .in_data2 { display:block; float:left; border:1px solid #333; width:110px; height:40px; line-height:40px; padding-left:20px; }
 .in_data3 { display:block; float:left; border:1px solid #333; width:119px; height:42px; margin:0 20px 0 20px; }
-.in_btn { display:block; height:40px; line-height:40px; width:130px; float:left; border-radius:22px; background:#FF7171; color:#333; margin-left:20px; 
+.in_btn { display:block; height:40px; line-height:40px; width:130px; float:left; border-radius:22px; background:#333; color:#fff; margin-left:20px; 
 cursor:pointer; }
-.in_btn:hover { background-color:#FF9595; }
+.in_btn:hover { background-color:#ABABAB; }
 .fr_col { width:50%; float:left; padding-top:20px; padding-bottom:20px; display:block; }
 .fr_col .in_btn { clear:both;  }
 .fr_col.first .in_btn { float:right; margin-right:25px; }

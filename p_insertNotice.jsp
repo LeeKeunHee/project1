@@ -76,6 +76,7 @@ h1 {
 }
 
 .fr_col {
+	text-align:center;
    width: 50%;
    float: left;
    padding-top: 20px;
@@ -104,7 +105,7 @@ h1 {
    <h1>공지사항 등록</h1>
    <!-- 상품 등록 폼 -->
    <form action="AddNoticeCtrl" class="frm" method="post"
-      name="pform">
+      name="nform">
       <table class="content">
          <tr>
             <th class="item_name"><label for="n_id" class="lb rep">공지사항 번호</label>
