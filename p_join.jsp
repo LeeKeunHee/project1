@@ -11,6 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/reset2.css">
 <link rel="stylesheet" href="./css/a_common.css">
+<<<<<<< HEAD
+=======
+\
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
 <style>
 input { outline:0; border:0;  border-radius:0;  }
 .fr { clear:both; width:960px; margin:10px auto; margin-bottom:80px;    }

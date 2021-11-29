@@ -9,7 +9,10 @@
 <link rel="stylesheet" href="./css/a_common.css">
 <link rel="stylesheet" href="./css/reset2.css">
 <style>
+<<<<<<< HEAD
 .wrap{ height: 1000px; }
+=======
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
 div {
 	display: block;
 }
@@ -102,8 +105,12 @@ dl {
 
 .content .contentsBody {
 	float: left;
+<<<<<<< HEAD
 	width: 80%;
 	height: 1200px;
+=======
+	width: calc(100% - 20%);
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
 	border-left: 2px solid #f1f1f1;
 	margin: 0 auto;
 	text-align: center;
@@ -145,11 +152,19 @@ dl {
 }
 
 .typeList dl.typeListSet {
+<<<<<<< HEAD
 	width: 750px; margin: 20px auto;
 }
 
 .typeList dl.typeListSet dt {
 	float:left; width: 145px; margin: 0 auto;
+=======
+	width: 700px; margin: 20px auto;
+}
+
+.typeList dl.typeListSet dt {
+	float:left; width: 125px; margin: 0 auto; margin-left: 20px;
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
 }
 </style>
 </head>
@@ -208,7 +223,11 @@ dl {
 			int proPrice = rs.getInt("p_price");
 			String proImg = "./img/"+rs.getString("p_img");
 %>
+<<<<<<< HEAD
 								<dt style="padding-left: 20px; padding-top: 20px;">
+=======
+								<dt style="padding-left: 20px;">
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
 									<img src="<%=proImg %>" alt=""  >
 									<h3 class="pro_tit" style="text-align: center; font-size: 14px;" ><%=proName %></h3>
 								</dt>

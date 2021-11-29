@@ -33,6 +33,7 @@ create table cs(cs_num number(6) not null,cs_id varchar2(5) primary key, cs_name
 cs_title varchar2(100) not null, cs_sub varchar2(2000) not null, 
 cs_date date not null, cs_file varchar2(30))
 select * from n_PRODUCT
+<<<<<<< HEAD
 drop table cs
 create sequence seq_num2 start with 1 increment by 1 maxvalue 1000000 cycle nocache;
 create sequence seq_cs_num start with 1 increment by 1 maxvalue 1000000 cycle nocache;
@@ -42,3 +43,9 @@ select * from NOTICE
 insert into cs values(seq_cs_num.Nextval,'A001','고객','고객문의1입니다', '고객문의1 입니다', sysdate, null)
 insert into cs values(seq_cs_num.Nextval,'A002','고객2','고객문의2입니다', '고객문의2 입니다', sysdate, null)
 insert into cs values(seq_cs_num.Nextval,'A003','고객3','고객문의3입니다', '고객문의3 입니다', sysdate, null)
+=======
+drop table notice
+create sequence seq_num start with 1 increment by 1 maxvalue 1000000 cycle nocache;
+drop sequence aaa
+delete from product where p_name='와우'
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31

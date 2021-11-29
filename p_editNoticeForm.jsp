@@ -74,16 +74,27 @@ input[readonly] { background:#f1f1f1; }
 			</tr>
 			<tr>
 				<th class="col_hd">
+<<<<<<< HEAD
 					<label for="n_sub">공지사항 내용</label>
 				</th>
 				<td class="col_data">
 					<textarea cols="95" rows="30" id="n_sub" name="n_sub" ><%=notice.getN_sub() %>
 					</textarea>
+=======
+					<label for="ubirth">공지사항 내용</label>
+				</th>
+				<td class="col_data">
+					<input type="text" id="n_sub" name="n_sub" class="in_data" value="<%=notice.getN_sub() %>" style="height: 300px"/>
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
 				</td>
 			</tr>
 			<tr>
 				<th class="col_hd">
+<<<<<<< HEAD
 					<label for="n_date">작성일</label>
+=======
+					<label for="uregdate">작성일</label>
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
 				</th>
 				<td class="col_data">
 					<input type="text" id="n_date" name="n_date" class="in_data" value="<%=notice.getN_date() %>" readonly/>

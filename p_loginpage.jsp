@@ -26,9 +26,14 @@
 }
 
 .con_tit {
+<<<<<<< HEAD
 	padding:25px;
 	font-size: large;
 	font-weight:bold;
+=======
+	font-size:x-large;
+	padding-top:20px;
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
 	text-align: center;
 	font-family: 'Noto Sans KR', sans-serif;
 }

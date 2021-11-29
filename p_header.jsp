@@ -19,7 +19,11 @@
 %>      
          <li><%=m_name %>님이 로그인 중입니다.</li>
          <li style="clear:both"><a href="p_logout.jsp">로그아웃</a></li>
+<<<<<<< HEAD
          <li><a href="p_mypage.jsp">마이 페이지</a></li>
+=======
+         <li><a href="EditMemberFormCtrl">회원정보수정</a></li>
+>>>>>>> 65e1348ed04f6a95ef0222e7ad0554bc16569a31
          <li><a href="sitemap.html">사이트맵</a></li>
 <%
     } else {   
