@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,6 +104,7 @@ dl {
 	width: calc(100% - 20%);
 	border-left: 2px solid #f1f1f1;
 	margin: 0 auto;
+	text-align: center;
 }
 
 #subContents {
@@ -127,7 +129,7 @@ dl {
 }
 
 .typeList {
-	width: 100%;
+	width: 700px;
 	position: relative;
 	overflow: hidden;
 }
@@ -139,18 +141,30 @@ dl {
 }
 
 .typeList dl.typeListSet {
-	width: 154px;
-	float: left;
-	margin-right: 12px;
+	width: 750px; margin: 20px auto;
 }
 
 .typeList dl.typeListSet dt {
-	height: 130px;
-	text-align: center;
+	float:left; width: 145px; margin: 0 auto;
 }
 </style>
 </head>
 <body>
+<%
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs;
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id="scott";
+		String pw="tiger";
+		String sql;
+		
+		Class.forName("oracle.jdbc.OracleDriver");
+		conn = DriverManager.getConnection(url, id, pw);
+		sql = "select * from product where p_kind='파이류'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+%>	
 	<%@ include file="p_header.jsp"%>
 	<div class="content">
 		<div class="breadcrumb">
@@ -182,57 +196,26 @@ dl {
 					<div class="typeList">
 						<div class="typeListLine">
 							<dl class="typeListSet">
-								<dt>
-									<img src="./img/sub_0001.gif" alt="" width=125px; height="127" />
-									<p>초코파이</p>
+		<%		
+		while(rs.next()) {
+			String proNum = rs.getString("p_num");
+			String proName = rs.getString("p_name");
+			String proKind = rs.getString("p_kind");
+			int proPrice = rs.getInt("p_price");
+			String proImg = "./img/"+rs.getString("p_img");
+%>
+								<dt style="padding-left: 20px; padding-top: 20px;">
+									<img src="<%=proImg %>" alt=""  >
+									<h3 class="pro_tit" style="text-align: center; font-size: 14px;" ><%=proName %></h3>
 								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/sub_0002.jpg" alt="" width=125px; height="127" />
-									<p>초코파이 바나나</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/sub_0003.jpg" alt="" width=125px; height="127" />
-									<p>호떡 품은 참붕어빵</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/sub_0004.jpg" alt="" width=125px; height="127" />
-									<p>찰초코파이情</p>
-								</dt>
+	<%
+		}	
+		rs.close();
+		stmt.close();
+		conn.close();
+%>	
 							</dl>
 						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/sub_0005.png" alt="" width=125px; height="127" />
-									<p>후레쉬베리</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/sub_0006.png" alt="" width=125px; height="127" />
-									<p>참붕어빵</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/sub_0007.png" alt="" width=125px; height="127" />
-									<p>카스타드</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/sub_0008.png" alt="" width=125px; height="127" />
-									<p>케익오뜨</p>
-								</dt>
-							</dl>
-						</div>
-						
 					</div>
 				</div>
 			</div>

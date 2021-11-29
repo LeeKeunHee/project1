@@ -36,10 +36,11 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
 		<thead>
 			<tr>
 				<th class="item1">번호</th>
-				<th class="item2">제목</th>
-				<th class="item3">작성자</th>
-				<th class="item4">작성일시</th>
-				<th class="item5">편집</th>
+				<th class="item2">글 번호</th>
+				<th class="item3">제목</th>
+				<th class="item4">작성자</th>
+				<th class="item5">작성일시</th>
+				<th class="item6">편집</th>
 			</tr>
 		</thead>		
 		<tbody>
@@ -51,12 +52,13 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
 	
 %>
 			<tr>
-				<td class="item1"><%=a %></td>	
-				<td class="item2"><a href=""<%=cs.getCs_title() %>"><%=cs.getCs_title() %></a></td>
-				<td class="item3"><%=cs.getCs_name() %></td>
-				<td class="item4"><%=cs.getCs_date() %></td>
-				<td class="item5"><input type="checkbox"  name="ck"  id="ck<%=i %>"  
-		class="ck_item" value="<%=cs.getCs_num() %>"/></td>
+				<td class="item1"><%=a %></td>
+				<td class="item2"><%=cs.getCs_id() %></a></td>
+				<td class="item3"><%=cs.getCs_title() %></td>
+				<td class="item4"><%=cs.getCs_name() %></td>
+				<td class="item5"><%=cs.getCs_date() %></td>
+				<td class="item6"><input type="checkbox"  name="ck"  id="ck<%=i %>"  
+		class="ck_item" value="<%=cs.getCs_id() %>"/></td>
 		
 			</tr>
 <%

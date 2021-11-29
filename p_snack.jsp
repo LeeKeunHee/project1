@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +9,9 @@
 <link rel="stylesheet" href="./css/a_common.css">
 <link rel="stylesheet" href="./css/reset2.css">
 <style>
-.wrap { display:block; width:100%; height: 2000px; }
-
+div {
+	display: block;
+}
 
 dt {
 	display: block;
@@ -22,7 +24,7 @@ dl {
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 }
-p{ font-size: 13px; }
+
 .content {
 	clear: both;
 	width: 100%;
@@ -100,15 +102,14 @@ p{ font-size: 13px; }
 .content .contentsBody {
 	float: left;
 	width: calc(100% - 20%);
-	height: 1200px;
 	border-left: 2px solid #f1f1f1;
 	margin: 0 auto;
+	text-align: center;
 }
 
 #subContents {
 	clear: both;
 	width: 670px;
-	height:100%;
 	margin: 0 auto;
 }
 
@@ -128,7 +129,7 @@ p{ font-size: 13px; }
 }
 
 .typeList {
-	width: 100%;
+	width: 700px;
 	position: relative;
 	overflow: hidden;
 }
@@ -140,18 +141,30 @@ p{ font-size: 13px; }
 }
 
 .typeList dl.typeListSet {
-	width: 154px;
-	float: left;
-	margin-right: 12px;
+	width: 750px; margin: 20px auto;
 }
 
 .typeList dl.typeListSet dt {
-	height: 130px;
-	text-align: center;
+	float:left; width: 145px; margin: 0 auto;
 }
 </style>
 </head>
 <body>
+<%
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs;
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id="scott";
+		String pw="tiger";
+		String sql;
+		
+		Class.forName("oracle.jdbc.OracleDriver");
+		conn = DriverManager.getConnection(url, id, pw);
+		sql = "select * from product where p_kind='스낵류'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+%>	
 	<%@ include file="p_header.jsp"%>
 	<div class="content">
 		<div class="breadcrumb">
@@ -166,7 +179,7 @@ p{ font-size: 13px; }
 			<aside class="sidebar">
 				<nav class="lnb">
 					<ul>
-						<li><a href="p_pie.jsp" >파이류</a></li>
+						<li><a href="p_pie.jsp">파이류</a></li>
 						<li><a href="p_snack.jsp" class="cur">스낵류</a></li>
 						<li><a href="p_bisket.jsp">비스킷류</a></li>
 						<li><a href="p_gum.jsp">껌류</a></li>
@@ -179,127 +192,29 @@ p{ font-size: 13px; }
 		<section class="contentsBody">
 			<div class="subContents">
 				<div class="subTitleArea">
-					<h3
-						style="color: red; font-size: 20px; font-weight:bold; text-align: left; margin-top: 15px;">스낵류</h3>
+					<h3 style="color: red; font-size: 20px; font-weight:bold; text-align: left; margin-top: 15px;">스낵류</h3>
 					<div class="typeList">
 						<div class="typeListLine">
 							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_001.png" alt="" width=125px; height="127" />
-									<p>스윙칩 갈릭디핑소스맛</p>
+		<%		
+		while(rs.next()) {
+			String proNum = rs.getString("p_num");
+			String proName = rs.getString("p_name");
+			String proKind = rs.getString("p_kind");
+			int proPrice = rs.getInt("p_price");
+			String proImg = "./img/"+rs.getString("p_img");
+%>
+								<dt style="padding-left: 20px;  padding-top: 20px;">
+									<img src="<%=proImg %>" alt=""  >
+									<h3 class="pro_tit" style="text-align: center; font-size: 14px;" ><%=proName %></h3>
 								</dt>
+	<%
+		}	
+		rs.close();
+		stmt.close();
+		conn.close();
+%>	
 							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_002.png" alt="" width=125px; height="127" />
-									<p>꿀버터 오!구마</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_003.png" alt="" width=125px; height="127" />
-									<p>고추칩</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_004.jpg" alt="" width=125px; height="127" />
-									<p>구운쌀칩</p>
-								</dt>
-							</dl>
-						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_005.jpg" alt="" width=125px; height="127" />
-									<p>콰삭칩</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_006.jpg" alt="" width=125px; height="127" />
-									<p>꼬북칩</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_007.png" alt="" width=125px; height="127" />
-									<p>도도한 미니미 나쵸</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_008.png" alt="" width=125px; height="127" />
-									<p>치킨팝</p>
-								</dt>
-							</dl>
-						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_009.jpg" alt="" width=125px; height="127" />
-									<p>도도한나쵸</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_010.png" alt="" width=125px; height="127" />
-									<p>썬</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_011.jpg" alt="" width=125px; height="127" />
-									<p>포카칩</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_012.jpg" alt="" width=125px; height="127" />
-									<p>무뚝뚝감자칩</p>
-								</dt>
-							</dl>
-						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_013.jpg" alt="" width=125px; height="127" />
-									<p>스윙칩</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_014.jpg" alt="" width=125px; height="127" />
-									<p>오!감자</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_015.jpg" alt="" width=125px; height="127" />
-									<p>눈을 감자</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_016.jpg" alt="" width=125px; height="127" />
-									<p>대단한나쵸</p>
-								</dt>
-							</dl>
-						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_017.jpg" alt="" width=125px; height="127" />
-									<p>오징어땅콩</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/snack/sub_018.jpg" alt="" width=125px; height="127" />
-									<p>땅콩강정</p>
-								</dt>
-							</dl>
-							
 						</div>
 					</div>
 				</div>

@@ -11,6 +11,12 @@ public class NoticeDAO {
 	private Date n_date;
 	private String n_file;
 	private String num;
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
 	public int getN_num() {
 		return n_num;
 	}
@@ -52,12 +58,6 @@ public class NoticeDAO {
 	}
 	public void setN_file(String n_file) {
 		this.n_file = n_file;
-	}
-	public String getNum() {
-		return num;
-	}
-	public void setNum(String num) {
-		this.num = num;
 	}
 	
 }

@@ -12,26 +12,31 @@ NewProductDAO newproduct = (NewProductDAO) request.getAttribute("newproduct");
 <head>
 <meta charset="UTF-8">
 <title>관리자 제품 수정</title>
+<link rel="stylesheet" href="./css/reset2.css">
+<link rel="stylesheet" href="./css/a_common.css">
 <style>
 .tit { padding-top:50px; line-height:50px; text-align:center; }
 table { display:table; border-collapse:collapse; }
 tr { display:table-row; }
 th, td { display:table-cell; }
-.tb { width:600px; margin:20px auto; }
+.tb { width:900px; margin:20px auto; }
 .tb th, .tb td { line-height:42px; border-bottom:1px solid #333; }
 .tb th { background:#E1E1E1; }
 .tb tr:first-child th, .tb tr:first-child td { border-top:1px solid #333; } 
-.in_data { display:block; line-height:32px; height:32px; margin-left:10px; padding-left:5px; width:240px; }
-.in_data2 { display:block; line-height:32px; height:200px; margin-left:10px; padding-left:5px; width:240px; }
+.in_data { display:block; line-height:32px; height:32px; margin-left:10px; padding-left:5px; width:650px; }
+.in_btn { background-color: #333; color: #fff; border-style: none; height:32px;}
+.in_btn:hover {  background-color:#ABABAB; }
+.in_data_area { line-height:1.6; padding:5px; width:400px; margin-left:10px; }
 .btn_wrap { width:220px; margin:20px auto; }
 .btn_wrap .in_btn { display:block; width:80px; margin:15px; background-color:#333; color:#fff; 
 text-align:center; border:0; outline:0; float:left; line-height:38px; }
-.btn_wrap .in_btn:hover { background-color:#E1E1E1; }
+.btn_wrap .in_btn:hover { background-color:#ABABAB; }
 .in_comment { padding-left:18px; }
 input[readonly] { background:#f1f1f1; }
 </style>
 </head>
 <body>
+<%@ include file="p_admin_header.jsp"%>
 <h2 class="tit">상세 제품 정보 수정</h2>
 <form action="EditNewProductCtrl" method="post" id="frm" name="frm">
    <table class="tb">
@@ -73,16 +78,18 @@ input[readonly] { background:#f1f1f1; }
                <label for="n_ub">내용</label>
             </th>
             <td class="col_data">
-               <input type="text" id="n_sub" name="n_sub" class="in_data2" value="<%=newproduct.getN_sub() %>"/>
+               <input type="text" id="n_sub" name="n_sub" class="in_data" value="<%=newproduct.getN_sub() %>"/>
             </td>
          </tr>
          <tr>
             <th class="col_hd">
-               <label for="n_img">이미지</label>
+               <label for="n_img">첨부파일</label>
             </th>
             <td class="col_data">
-               <input type="text" id="n_img" name="n_img" class="in_data" value="<%=newproduct.getN_img() %>"/>
-            </td>
+              <input type="text" name="n_img" id="n_img" class="in_data" value="<%=newproduct.getN_img() %>" /> 
+					<td class="col_data">
+					<input type="button" value="첨부파일 업로드" class="in_btn" onclick="imgCheck()"  /> 
+					<input type="hidden" value="" name="imgck" id="imgck" /></td>
          </tr>
       </tbody>
    </table>

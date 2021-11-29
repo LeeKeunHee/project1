@@ -123,8 +123,15 @@ h1 {
 			<tr>
 				<th class="item_name"><label for="p_kind" class="lb rep">종류</label>
 				</th>
-				<td class="item_val"><input type="text" name="p_kind"
-					id="p_kind" class="in_data" placeholder="종류 입력" required /></td>
+				<td class="item_val">
+				<select name="p_kind" id="p_kind" class="in_data">
+					<option value="파이류">파이류</option>
+					<option value="스낵류">스낵류</option>
+					<option value="비스킷류">비스킷류</option>
+					<option value="껌류">껌류</option>
+					<option value="사탕류">사탕류</option>
+					<option value="초콜릿류">초콜릿류</option>
+					</select></td>
 			</tr>
 			<tr>
 				<th class="item_name"><label for="p_price" class="lb rep">가격</label>

@@ -38,20 +38,22 @@ public class CsDel extends HttpServlet {
 			rs = stmt.executeQuery();
 			ArrayList<CsDAO> CsList = new ArrayList<CsDAO>();
 			while(rs.next()) {
-				int num = rs.getInt("cs_num");
-				String name = rs.getString("cs_name");
-				String title = rs.getString("cs_title");
-				String sub = rs.getString("cs_sub");
-				Date date = rs.getDate("cs_date");
-				String file = rs.getString("cs_file");
+				int cs_num = rs.getInt("cs_num");
+				String cs_id = rs.getString("cs_id");
+				String cs_name = rs.getString("cs_name");
+				String cs_title = rs.getString("cs_title");
+				String cs_sub = rs.getString("cs_sub");
+				Date cs_date = rs.getDate("cs_date");
+				String cs_file = rs.getString("cs_file");
 				
 				CsDAO cs = new CsDAO();
-				cs.setCs_num(num);
-				cs.setCs_name(name);
-				cs.setCs_title(title);
-				cs.setCs_sub(sub);
-				cs.setCs_date(date);
-				cs.setCs_file(file);
+				cs.setCs_num(cs_num);
+				cs.setCs_id(cs_id);
+				cs.setCs_name(cs_name);
+				cs.setCs_title(cs_title);
+				cs.setCs_sub(cs_sub);
+				cs.setCs_date(cs_date);
+				cs.setCs_file(cs_file);
 				
 				CsList.add(cs);
 			}

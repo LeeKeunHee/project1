@@ -29,9 +29,9 @@ padding-left:150px; color:#222; font-weight:bold; font-family: 'Gothic A1', sans
 .in_data { display:block; float:left; border:1px solid #333; width:400px; height:40px; line-height:40px; padding-left:20px; }
 .in_data2 { display:block; float:left; border:1px solid #333; width:110px; height:40px; line-height:40px; padding-left:20px; }
 .in_data3 { display:block; float:left; border:1px solid #333; width:119px; height:42px; margin:0 20px 0 20px; }
-.in_btn { display:block; height:40px; line-height:40px; width:130px; float:left; border-radius:22px; background:#FF7171; color:#333; margin-left:20px; 
+.in_btn { display:block; height:40px; line-height:40px; width:130px; float:left; border-radius:22px; background:#333; color:#fff; margin-left:20px; 
 cursor:pointer; }
-.in_btn:hover { background-color:#FF9595; }
+.in_btn:hover { background-color:#ABABAB; }
 .fr_col { width:50%; float:left; padding-top:20px; padding-bottom:20px; display:block; }
 .fr_col .in_btn { clear:both;  }
 .fr_col.first .in_btn { float:right; margin-right:25px; }
@@ -41,7 +41,7 @@ cursor:pointer; }
 <body>
 <%@ include file="p_admin_header.jsp" %>
 	<!-- 회원가입 폼 -->
-<div class="fr">	
+	<div class="fr">	
 	<form action="EditMemberCtrl" class="frm" method="post" name="joinform" onsubmit="return joinCheck(this)">
 	<h1 class="fr_tit">회원 정보 수정</h1>
 	<p class="fr_com"> 필수 입력 항목에는 반드시 입력 하셔야 합니다.</p>

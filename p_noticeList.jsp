@@ -40,6 +40,7 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
             <th class="item3">제목</th>
             <th class="item4">작성자</th>
             <th class="item5">작성일시</th>
+             <th class="item6">첨부파일</th>
          </tr>
       </thead>      
       <tbody>
@@ -51,11 +52,12 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
    
 %>
          <tr>
-            <td class="item1"><%= a %></td>
-            <td class="item2"><a href="EditNoticeFormCtrl?num=<%=a %>&id=<%=notice.getN_id() %>"><%=notice.getN_id() %></td>   
-            <td class="item3"><%=notice.getN_title() %></a></td>
+            <td class="item1"><%=a %></td>
+            <td class="item2"><a href="EditNoticeFormCtrl?num=<%=a %>&id=<%=notice.getN_id() %>"><%=notice.getN_id() %></a></td>   
+            <td class="item3"><%=notice.getN_title() %></td>
             <td class="item4"><%=notice.getN_name() %></td>
             <td class="item5"><%=notice.getN_date() %></td>
+            <td><img src='./img/<%=notice.getN_file() %>' alt=""></td>
          </tr>
 <%
    }

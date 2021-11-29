@@ -37,7 +37,7 @@
 			response.sendRedirect("p_index.jsp");				
 			}
 		} else {
-			response.sendRedirect("p_login.html");
+			response.sendRedirect("p_login.jsp");
 		}
 		rs.close();
 		ps.close();

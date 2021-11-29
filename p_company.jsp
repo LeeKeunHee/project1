@@ -86,6 +86,8 @@
 	float: right;
 	width: calc(100% - 202px);
 	border-left: 2px solid #f1f1f1;
+	padding-top:20px;
+	text-align: center;
 }
 
 .vs {

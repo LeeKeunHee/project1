@@ -32,7 +32,7 @@ public class deleteCsCtrl extends HttpServlet {
 		con = DriverManager.getConnection(url,db_id,db_pw);
 		int cnt = 0;
 		for(int i=0; i<ck.length; i++) {
-			sql = "delete from cs where cs_num=?";
+			sql = "delete from cs where cs_id=?";
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, ck[i]);
 			cnt ++;

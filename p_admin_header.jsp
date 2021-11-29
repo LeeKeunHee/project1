@@ -19,7 +19,7 @@
 %>      
          <li><%=m_name %>님이 로그인 중입니다.</li>
          <li style="clear:both"><a href="p_logout.jsp">로그아웃</a></li>
-         <li><a href="">회원정보수정</a></li>
+         <li><a href="p_index.jsp">메인 페이지로 이동</a></li>
 <%
     } else {   
 %>         
@@ -35,7 +35,7 @@
                 <nav class="gnb">
                     <ul>
                         <li>
-                            <a href="" class="dp1">공지사항관리</a>
+                            <a href="NoticeListCtrl" class="dp1">공지사항관리</a>
                             <ul class="sub">
                             	<li><a href="NoticeListCtrl">공지사항목록</a></li>
                                 <li><a href="p_insertNotice.jsp">공지사항등록</a></li>
@@ -43,14 +43,14 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="" class="dp1">회원관리</a>
+                            <a href="MemberListCtrl" class="dp1">회원관리</a>
                             <ul class="sub">
                             	<li><a href="MemberListCtrl">회원목록</a></li>
                                 <li><a href="MemberDel">회원탈퇴</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="" class="dp1">제품관리</a>
+                            <a href="ProductListCtrl" class="dp1">제품관리</a>
                             <ul class="sub">
                             	<li><a href="ProductListCtrl">제품목록</a></li>
                                 <li><a href="p_insertProduct.jsp">제품등록</a></li>
@@ -58,7 +58,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="" class="dp1">신제품관리</a>
+                            <a href="NewProductListCtrl" class="dp1">신제품관리</a>
                             <ul class="sub">
                             	<li><a href="NewProductListCtrl">신제품 목록</a></li>
                                 <li><a href="p_insertNewProduct.jsp">신제품 등록</a></li>
@@ -66,7 +66,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="" class="dp1">고객문의관리</a>
+                            <a href="CsListCtrl" class="dp1">고객문의관리</a>
                             <ul class="sub">
                                 <li><a href="CsListCtrl">고객문의목록</a></li>
                                 <li><a href="CsDel">고객문의삭제</a></li>

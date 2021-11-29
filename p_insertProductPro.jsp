@@ -39,10 +39,8 @@
             stmt.setString(6, p_img);
             int n = stmt.executeUpdate();
             if(n>=1) {
-               //제품 등록 성공시 이동
                response.sendRedirect("ProductListCtrl");
             } else {
-               //제품 등록 실패시 이동
                response.sendRedirect("p_insertProduct.jsp");
             }
             stmt.close();

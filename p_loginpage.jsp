@@ -26,6 +26,9 @@
 }
 
 .con_tit {
+	padding:25px;
+	font-size: large;
+	font-weight:bold;
 	text-align: center;
 	font-family: 'Noto Sans KR', sans-serif;
 }

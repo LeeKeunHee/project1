@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,9 +102,9 @@ dl {
 .content .contentsBody {
 	float: left;
 	width: calc(100% - 20%);
-	height: 1200px;
 	border-left: 2px solid #f1f1f1;
 	margin: 0 auto;
+	text-align: center;
 }
 
 #subContents {
@@ -128,7 +129,7 @@ dl {
 }
 
 .typeList {
-	width: 100%;
+	width: 700px;
 	position: relative;
 	overflow: hidden;
 }
@@ -140,18 +141,30 @@ dl {
 }
 
 .typeList dl.typeListSet {
-	width: 154px;
-	float: left;
-	margin-right: 12px;
+	width: 750px; margin: 20px auto;
 }
 
 .typeList dl.typeListSet dt {
-	height: 130px;
-	text-align: center;
+	float:left; width: 145px; margin: 0 auto;
 }
 </style>
 </head>
 <body>
+<%
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs;
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id="scott";
+		String pw="tiger";
+		String sql;
+		
+		Class.forName("oracle.jdbc.OracleDriver");
+		conn = DriverManager.getConnection(url, id, pw);
+		sql = "select * from product where p_kind='비스킷류'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+%>	
 	<%@ include file="p_header.jsp"%>
 	<div class="content">
 		<div class="breadcrumb">
@@ -168,7 +181,7 @@ dl {
 					<ul>
 						<li><a href="p_pie.jsp" >파이류</a></li>
 						<li><a href="p_snack.jsp">스낵류</a></li>
-						<li><a href="p_bisket.jsp"class="cur">비스킷류</a></li>
+						<li><a href="p_bisket.jsp" class="cur">비스킷류</a></li>
 						<li><a href="p_gum.jsp">껌류</a></li>
 						<li><a href="p_candy.jsp">캔디류</a></li>
 						<li><a href="p_chocolate.jsp">초콜릿류</a></li>
@@ -183,126 +196,23 @@ dl {
 					<div class="typeList">
 						<div class="typeListLine">
 							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_001.jpg" alt="" width=125px; height="127" />
-									<p>고래밥 초코범벅</p>
+		<%		
+		while(rs.next()) {
+			String proNum = rs.getString("p_num");
+			String proName = rs.getString("p_name");
+			int proPrice = rs.getInt("p_price");
+			String proImg = "./img/"+rs.getString("p_img");
+%>
+								<dt style="padding-left: 20px; padding-top: 20px;">
+									<img src="<%=proImg %>" alt=""  >
+									<h3 class="pro_tit" style="text-align: center; font-size: 14px;" ><%=proName %></h3>
 								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_002.jpg" alt="" width=125px; height="127" />
-									<p>와클</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_003.jpg" alt="" width=125px; height="127" />
-									<p>하양송이</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_004.jpg" alt="" width=125px; height="127" />
-									<p>고소미 1979</p>
-								</dt>
-							</dl>
-						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_005.jpg" alt="" width=125px; height="127" />
-									<p>다이제</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_006.jpg" alt="" width=125px; height="127" />
-									<p>쌀쿠키</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_007.jpg" alt="" width=125px; height="127" />
-									<p>고래밥</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_008.png" alt="" width=125px; height="127" />
-									<p>예감</p>
-								</dt>
-							</dl>
-						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_009.jpg" alt="" width=125px; height="127" />
-									<p>배배</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_010.png" alt="" width=125px; height="127" />
-									<p>쿠쉬쿠쉬</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_011.png" alt="" width=125px; height="127" />
-									<p>촉촉한 초코칩</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_012.png" alt="" width=125px; height="127" />
-									<p>통크</p>
-								</dt>
-							</dl>
-						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_013.jpg" alt="" width=125px; height="127" />
-									<p>오리온샌드</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_014.jpg" alt="" width=125px; height="127" />
-									<p>초코송이</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_015.png" alt="" width=125px; height="127" />
-									<p>왕고래밥</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_016.png" alt="" width=125px; height="127" />
-									<p>미쯔블랙(MIZ BLACK)</p>
-								</dt>
-							</dl>
-						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_017.gif" alt="" width=125px; height="127" />
-									<p>초코칩쿠키</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_018.jpg" alt="" width=125px; height="127" />
-									<p>초코칩쿠키 미니</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/bisket/sub_019.png" alt="" width=125px; height="127" />
-									<p>고소미</p>
-								</dt>
+	<%
+		}	
+		rs.close();
+		stmt.close();
+		conn.close();
+%>	
 							</dl>
 						</div>
 					</div>

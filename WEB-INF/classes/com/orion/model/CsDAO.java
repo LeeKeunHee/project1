@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class CsDAO {
 	private int cs_num;
+	private String cs_id;
 	private String cs_name;
 	private String cs_title;
 	private String cs_sub;
@@ -14,6 +15,12 @@ public class CsDAO {
 	}
 	public void setCs_num(int cs_num) {
 		this.cs_num = cs_num;
+	}
+	public String getCs_id() {
+		return cs_id;
+	}
+	public void setCs_id(String cs_id) {
+		this.cs_id = cs_id;
 	}
 	public String getCs_name() {
 		return cs_name;

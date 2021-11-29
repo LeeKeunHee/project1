@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,6 +104,7 @@ dl {
 	width: calc(100% - 20%);
 	border-left: 2px solid #f1f1f1;
 	margin: 0 auto;
+	text-align: center;
 }
 
 #subContents {
@@ -127,7 +129,7 @@ dl {
 }
 
 .typeList {
-	width: 100%;
+	width: 700px;
 	position: relative;
 	overflow: hidden;
 }
@@ -139,18 +141,30 @@ dl {
 }
 
 .typeList dl.typeListSet {
-	width: 154px;
-	float: left;
-	margin-right: 12px;
+	width: 750px; margin: 20px auto;
 }
 
 .typeList dl.typeListSet dt {
-	height: 130px;
-	text-align: center;
+	float:left; width: 145px; margin: 0 auto;
 }
 </style>
 </head>
 <body>
+<%
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs;
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id="scott";
+		String pw="tiger";
+		String sql;
+		
+		Class.forName("oracle.jdbc.OracleDriver");
+		conn = DriverManager.getConnection(url, id, pw);
+		sql = "select * from product where p_kind='껌류'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+%>	
 	<%@ include file="p_header.jsp"%>
 	<div class="content">
 		<div class="breadcrumb">
@@ -165,7 +179,7 @@ dl {
 			<aside class="sidebar">
 				<nav class="lnb">
 					<ul>
-						<li><a href="p_pie.jsp" >파이류</a></li>
+						<li><a href="p_pie.jsp">파이류</a></li>
 						<li><a href="p_snack.jsp">스낵류</a></li>
 						<li><a href="p_bisket.jsp">비스킷류</a></li>
 						<li><a href="p_gum.jsp" class="cur">껌류</a></li>
@@ -182,39 +196,26 @@ dl {
 					<div class="typeList">
 						<div class="typeListLine">
 							<dl class="typeListSet">
-								<dt>
-									<img src="./img/gum/sub01.jpg" alt="" width=125px; height="127" />
-									<p>닥터유 껌</p>
+		<%		
+		while(rs.next()) {
+			String proNum = rs.getString("p_num");
+			String proName = rs.getString("p_name");
+			String proKind = rs.getString("p_kind");
+			int proPrice = rs.getInt("p_price");
+			String proImg = "./img/"+rs.getString("p_img");
+%>
+								<dt style="padding-left: 20px;  padding-top: 20px;">
+									<img src="<%=proImg %>" alt=""  >
+									<h3 class="pro_tit" style="text-align: center; font-size: 14px;" ><%=proName %></h3>
 								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/gum/sub02.jpg" alt="" width=125px; height="127" />
-									<p>아이셔 껌</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/gum/sub03.jpg" alt="" width=125px; height="127" />
-									<p>더 자일리톨</p>
-								</dt>
-							</dl>
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/gum/sub04.jpg" alt="" width=125px; height="127" />
-									<p>후라보노</p>
-								</dt>
+	<%
+		}	
+		rs.close();
+		stmt.close();
+		conn.close();
+%>	
 							</dl>
 						</div>
-						<div class="typeListLine">
-							<dl class="typeListSet">
-								<dt>
-									<img src="./img/gum/sub05.jpg" alt="" width=125px; height="127" />
-									<p>와우</p>
-								</dt>
-							</dl>
-						</div>
-						
 					</div>
 				</div>
 			</div>
