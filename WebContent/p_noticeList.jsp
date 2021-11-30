@@ -23,6 +23,7 @@ th, td{display:table=cell;}
 .tb th, .tb td{ line-height:36px; border-bottom:1px solid #333;}
 .tb th { border-top:2px solid #333; background:#ABABAB;}
 .tb tbody tr:nth-child(2n) td{background:#E1E1E1;}
+.item2 { width: 200px; }
 .btn_wrap { width:220px; margin:20px auto; }
 .btn_wrap .in_btn { display:block; width:80px; margin:15px; background-color:#333; color:#fff; 
 text-align:center; border:0; outline:0; float:left; line-height:38px; }
@@ -40,7 +41,6 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
             <th class="item3">제목</th>
             <th class="item4">작성자</th>
             <th class="item5">작성일시</th>
-             <th class="item6">첨부파일</th>
          </tr>
       </thead>      
       <tbody>
@@ -57,7 +57,6 @@ text-align:center; border:0; outline:0; float:left; line-height:38px; }
             <td class="item3"><%=notice.getN_title() %></td>
             <td class="item4"><%=notice.getN_name() %></td>
             <td class="item5"><%=notice.getN_date() %></td>
-            <td><img src='./img/<%=notice.getN_file() %>' alt=""></td>
          </tr>
 <%
    }

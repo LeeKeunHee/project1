@@ -53,7 +53,7 @@ text-align: center; }
 .noti_lst li a { color:#333; }
 .noti_pic { width: 360px; height: 360px; background-position:center center; 
 background-repeat:no-repeat; overflow:hidden; background-size:auto 100%; }
-.noti_pic img { display:block; width:auto; height:auto; max-height:360px; }
+.noti_pic img { display:block; width:360px; height:auto; max-height:360px; }
 .noti_tit { line-height:2; }
 .noti_com { padding-right:20px; overflow:hidden; white-space:no-wrap; text-overflow:ellipsis; }
 
@@ -65,6 +65,7 @@ background-repeat:no-repeat; overflow:hidden; background-size:auto 100%; }
 .pro_pic { display:block; width:auto; height:auto; max-height:360px; }
 .pro_tit { line-height:2; }
 .pro_com { padding-right:20px; overflow:hidden; white-space:no-wrap; text-overflow:ellipsis; }
+.pro_img1 { width: 360px; }
 </style>
 <link rel="stylesheet" href="./css/a_common.css">
 <link rel="stylesheet" href="./css/reset2.css">
@@ -96,7 +97,7 @@ background-repeat:no-repeat; overflow:hidden; background-size:auto 100%; }
             %>   
                <li>   
                      <a href="NoticeListCtrl2">   
-                     <img src='<%=n_file %>'  alt='<%=rs.getString("n_file") %>' class="pro_img" />
+                     <img src='<%=n_file %>'  alt='<%=rs.getString("n_file") %>' class="pro_img1" />
                      <h3 class="noti_tit"><%=rs.getString("n_title") %></h3>
                      <p class="noti_com"><%=rs.getString("n_sub") %></p>
                      <p class="noti_date"><%=rs.getDate("n_date") %></p>
