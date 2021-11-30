@@ -20,7 +20,7 @@ public class LogoutCtrl extends HttpServlet {
 		if(m_id!="") {
 			session.invalidate();
 		}
-		response.sendRedirect("p_index.jsp");		
+		response.sendRedirect("index.jsp");		
 	}
 
 }

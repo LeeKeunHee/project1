@@ -38,7 +38,7 @@ input[readonly] { background:#f1f1f1; }
 <body>
 <%@ include file="p_admin_header.jsp"%>
 <h2 class="tit">상세 제품 정보 수정</h2>
-<form action="EditNewProductCtrl" method="post" id="frm" name="frm">
+<form action="EditNewProductCtrl" method="post" id="npform" name="npform">
    <table class="tb">
       <tbody>
          <tr>
@@ -99,6 +99,18 @@ input[readonly] { background:#f1f1f1; }
       <button type="reset" class="in_btn" onclick="">취소</button>
    </div>   
 </form>
-
+ <script>
+		
+		function imgCheck() {
+			window.open("p_imgCheckForm2.jsp", "pimgcheck",
+					"width=300, height=300");
+		}
+		function pCheck() {
+			if (f.imgck.value != "yes") {
+				alert("이미지 체크가 되어 있지 않습니다.")
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>

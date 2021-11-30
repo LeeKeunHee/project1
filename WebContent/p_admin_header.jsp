@@ -19,7 +19,7 @@
 %>      
          <li><%=m_name %>님이 로그인 중입니다.</li>
          <li style="clear:both"><a href="p_logout.jsp">로그아웃</a></li>
-         <li><a href="p_index.jsp">메인 페이지로 이동</a></li>
+         <li><a href="index.jsp">메인 페이지로 이동</a></li>
 <%
     } else {   
 %>         

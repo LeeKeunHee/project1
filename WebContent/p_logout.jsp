@@ -10,5 +10,5 @@
 		session.invalidate();
 	}
 
-	response.sendRedirect("p_index.jsp");
+	response.sendRedirect("index.jsp");
 %>

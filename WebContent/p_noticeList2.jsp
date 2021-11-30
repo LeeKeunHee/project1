@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="./css/a_common.css">
 <style>
 .tit {
-	text-align: center;
+	clear:both; text-align: center; padding : 20px; 
 }
 
 table {
@@ -75,10 +75,7 @@ th, td {
 </style>
 </head>
 <body>
-	<%@ include file="p_header.jsp"%><br>
-	<br>
-	<br>
-	<br>
+	<%@ include file="p_header.jsp"%>
 	<h2 class="tit">공지사항 목록</h2>
 	<table class="tb">
 		<thead>

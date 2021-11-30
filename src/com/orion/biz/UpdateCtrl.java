@@ -61,7 +61,7 @@ public class UpdateCtrl extends HttpServlet {
 			if(cnt >= 1) { 
 				response.sendRedirect("p_mypage.jsp");
 			} else {
-				response.sendRedirect("p_index.jsp");
+				response.sendRedirect("index.jsp");
 			}
 		} catch(Exception e) {
 			response.sendRedirect("e404.jsp");

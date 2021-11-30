@@ -40,7 +40,6 @@ text-align:center; border:0; outline:0;  line-height:38px; }
 				<th class="item3">제목</th>
 				<th class="item4">작성자</th>
 				<th class="item5">작성일시</th>
-				<th class="item6">첨부파일</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -56,7 +55,6 @@ text-align:center; border:0; outline:0;  line-height:38px; }
 				<td class="item3"><%=cs.getCs_title()%></td>
 				<td class="item4"><%=cs.getCs_name()%></td>
 				<td class="item5"><%=cs.getCs_date()%></td>
-				<td><img src='./img/<%=cs.getCs_file()%>' alt=""></td>
 			</tr>
 			<%
 				}

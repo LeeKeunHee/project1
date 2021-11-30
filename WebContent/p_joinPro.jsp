@@ -41,7 +41,7 @@
 			int n = stmt.executeUpdate();
 			if(n>=1) {
 				//회원가입 성공시 이동
-				response.sendRedirect("p_index.jsp");
+				response.sendRedirect("index.jsp");
 			} else {
 				//회원가입 실패시 이동
 				response.sendRedirect("p_join.jsp");

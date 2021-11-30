@@ -34,7 +34,7 @@
 			if(m_id.equals("admin") && m_pw.equals("1234")){
 				response.sendRedirect("p_admin.jsp");
 			}else{
-			response.sendRedirect("p_index.jsp");				
+			response.sendRedirect("index.jsp");				
 			}
 		} else {
 			response.sendRedirect("p_login.jsp");

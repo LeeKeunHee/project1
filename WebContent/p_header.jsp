@@ -5,7 +5,7 @@
         <header class="hd">
             <div class="hd_wrap">
                 <nav class="tnb">
-                    <a href="p_index.jsp" class="logo">
+                    <a href="index.jsp" class="logo">
                         <img src="./img/logo.png" alt="앰블럼이미지">
                     </a>
                     <ul class="right">

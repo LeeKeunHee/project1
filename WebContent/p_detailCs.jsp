@@ -45,7 +45,7 @@ input[readonly] { background:#f1f1f1; }
 					<label for="cs_num" >번호</label>
 				</th>
 				<td class="col_data">
-					<input type="text" id="cs_num" name="cs_num" class="in_data" value="<%=cs.getNum() %>" readonly required />
+					<input type="text" id="cs_num" name="cs_num" class="in_data" value="<%=cs.getCs_num() %>" readonly required />
 				</td>
 			</tr>
 			<tr>
