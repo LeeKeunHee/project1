@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+	<!-- 회원 조회 -->
+	<select id="" resultType="" parameterType="">
+	</select>
+	
+	<!-- 회원 정보 보기 -->
+	<select id="" resultType="" parameterType="">
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="" parameterType="">
+	</insert>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="" parameterType="">
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="" parameterType="">
+	</delete>
+</mapper>
