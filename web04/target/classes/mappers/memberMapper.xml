@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
-	<!-- 회원 조회 -->
-	<select id="" resultType="" parameterType="">
+	<!-- 회원 목록 -->
+	<select id="memberList" resultType="kr.co.vo.MemberVO" >
+		select userid, userpass, username, regdate from mp_member
+		order by regdate DESC
 	</select>
 	
 	<!-- 회원 정보 보기 -->
-	<select id="" resultType="" parameterType="">
+	<select id="memberDetail" resultType="kr.co.vo.MemberVO" parameterType="kr.co.vo.MemberVO">
+		select userid, userpass, username from mp_member where userid = #{userid}
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="memberDetail" resultType="kr.co.vo.MemberVO" >
+		select userid, userpass, username from mp_member where userid = #{userid} and userpass=#{userpass}
 	</select>
 	
 	<!-- 회원 가입 -->
-	<insert id="" parameterType="">
+	<insert id="regiter">
+		insert into mp_member(userid, userpass, username) values(#{userid}, #{userpass}, #{username}) 
 	</insert>
 	
 	<!-- 회원 정보 수정 -->
-	<update id="" parameterType="">
+	<update id="memberUpdate" >
+		update mp_member set userpass=#{userpass} and username=#{username}
+		where userid=#{userid} 
 	</update>
 	
 	<!-- 회원 탈퇴 -->
-	<delete id="" parameterType="">
+	<delete id="memberDelete">
+		DELETE FROM MP_MEMBER WHERE USERID = #{userid}
 	</delete>
 </mapper>

@@ -2,22 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
 <mapper namespace="replyMapper">
 	<!-- 댓글 목록 -->
-	<select id="" resultType="" parameterType="">
+	<select id="readReply" resultType="kr.co.vo.ReplyVO" parameterType="">
+		select rno, content, writer, regdate from mp_reply 
+		where bno=#{bno} 
 	</select>
 	
-	<!-- 댓글 보기 -->
-	<select id="" resultType="" parameterType="">
-	</select>
+	<!-- 댓글 상세보기 -->
+	<select id="selectReply" resultType="kr.co.vo.ReplyVO">
+		SELECT bno, rno, content, writer, regdate from mp_reply 
+		where rno = #{rno}
+	</select>		  
 	
 	<!-- 댓글 추가 -->
-	<insert id="" parameterType="">
+	<insert id="writeReply" parameterType="kr.co.vo.ReplyVO">
+		insert into mp_reply(bno, rno, content, writer) values(#{bno}, mp_reply_seq.nextval, #{content}, #{writer})
 	</insert>
 	
 	<!-- 댓글 수정 -->
-	<update id="" parameterType="">
+	<update id="updateReply" parameterType="kr.co.vo.ReplyVO">
+		update mp_reply set content=#{content} where rno=#{rno}
 	</update>
 	
 	<!-- 댓글 삭제 -->
-	<delete id="" parameterType="">
+	<delete id="deleteReply" parameterType="kr.co.vo.ReplyVO">
+		delete from mp_reply where rno=#{rno}
 	</delete>
 </mapper>
