@@ -2,71 +2,97 @@ package kr.co.service;
 
 import java.util.List;
 import java.util.Map;
-
+import javax.annotation.Resource;
 import javax.inject.Inject;
-
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import kr.co.dao.BoardDAO;
+import kr.co.util.FileUtils;
 import kr.co.vo.BoardVO;
 import kr.co.vo.SearchCriteria;
 
-public class BoardServiceImpl {
-	@Inject
+@Service
+public class BoardServiceImpl implements BoardService {
+
+	@Resource(name = "fileUtils")
+	private FileUtils fileUtils;
+
+	@Inject 
 	private BoardDAO dao;
-	
-	//°Ô½Ã±Û ÀÛ¼º -> dao.write(boardVO)
+
+	// ê²Œì‹œê¸€ ì‘ì„±
+	@Override
 	public void write(BoardVO boardVO, MultipartHttpServletRequest mpRequest) throws Exception {
 		dao.write(boardVO);
+
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(boardVO, mpRequest);
+		int size = list.size();
+		for (int i = 0; i < size; i++) {
+			dao.insertFile(list.get(i));
+		}
 	}
-			
-	//°Ô½Ã¹° ¸ñ·Ï -> dao.list(sc) boardVO
+
+	// ê²Œì‹œë¬¼ ëª©ë¡ ì¡°íšŒ
+	@Override
 	public List<BoardVO> list(SearchCriteria scri) throws Exception {
+
 		return dao.list(scri);
 	}
-			
-	//°Ô½Ã±Û ÃÑ °¹¼ö -> dao.listCount(sc) count
+
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
+	@Override
 	public int listCount(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
 		return dao.listCount(scri);
 	}
-			
-	//°Ô½Ã±Û º¸±â -> dao.read(bno) boardVO
+
+	// ê²Œì‹œë¬¼ ì¡°íšŒ
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@Override
 	public BoardVO read(int bno) throws Exception {
+			dao.boardHit(bno);
 		return dao.read(bno);
 	}
-			
-	//°Ô½Ã±Û ¼öÁ¤  -> dao.update(boardVO)
-	public void update(BoardVO boardVO) throws Exception {
+
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
+	@Override
+	public void update(BoardVO boardVO, 
+					   String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
 		dao.update(boardVO);
+		
+		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(boardVO, files, fileNames, mpRequest);
+		Map<String, Object> tempMap = null;
+		int size = list.size();
+		for(int i = 0; i<size; i++) {
+			tempMap = list.get(i);
+			if(tempMap.get("IS_NEW").equals("Y")) {
+				dao.insertFile(tempMap);
+			}else {
+				dao.updateFile(tempMap);
+			}
+		}
 	}
-			
-	//°Ô½Ã±Û »èÁ¦  -> dao.delete(bno)
+
+	// ê²Œì‹œë¬¼ ì‚­ì œ
+	@Override
 	public void delete(int bno) throws Exception {
+
 		dao.delete(bno);
 	}
-			
-	//Ã·ºÎÆÄÀÏ ¾÷·Îµå -> dao.insertFile(hashMap)
-	public void insertFile(Map<String, Object> map) throws Exception {
-		dao.insertFile(map);
-	}
-			
-	//Ã·ºÎÆÄÀÏ Á¶È¸  -> dao.selectFileList(bno) hashMap
+
+	// ì²¨ë¶€íŒŒì¼ ì¡°íšŒ
+	@Override
 	public List<Map<String, Object>> selectFileList(int bno) throws Exception {
+		// TODO Auto-generated method stub
 		return dao.selectFileList(bno);
 	}
-			
-	//Ã·ºÎÆÄÀÏ ´Ù¿î·Îµå  -> dao.selectFileInfo(hashMap) hashMap
+
+	// ì²¨ë¶€íŒŒì¼ ë‹¤ìš´ë¡œë“œ
+	@Override
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
 		return dao.selectFileInfo(map);
-	}
-			
-	//Ã·ºÎÆÄÀÏ ¼öÁ¤  -> dao.updateFile(hashMap)
-	public void updateFile(Map<String, Object> map) throws Exception {
-		dao.updateFile(map);
-	}
-			
-	//°Ô½Ã±ÛÀÇ Á¶È¸¼ö : °Ô½Ã±Û º¸±â¸¦ ÇßÀ» °æ¿ì ÇØ´ç ±ÛÀÇ hit¸¦ Áõ°¡  -> dao.boardHit(bno)
-	public void boardHit(int bno) throws Exception {
-		dao.boardHit(bno);
 	}
 }

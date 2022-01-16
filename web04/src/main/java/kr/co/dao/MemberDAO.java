@@ -5,27 +5,28 @@ import java.util.List;
 import kr.co.vo.MemberVO;
 
 public interface MemberDAO {
-	//È¸¿ø¸ñ·Ï -> sql.selectList  memberMapper.memeberList() MemberVO
+	
+	// íšŒì›ëª©ë¡
 	public List<MemberVO> memberList(MemberVO vo) throws Exception;
 	
-	//È¸¿ø°¡ÀÔ -> sql.insert  memberMapper.register
+	// íšŒì›ê°€ì…
 	public void register(MemberVO vo) throws Exception;
 	
-	//·Î±×ÀÎ -> sql.selectOne memberMapper.login() MemberVO
-	public MemberVO login(MemberVO vo) throws Exception;  
+	//ë¡œê·¸ì¸
+	public MemberVO login(MemberVO vo) throws Exception;
 	
-	//È¸¿ø»ó¼¼º¸±â -> sql.selectONe memberMapper.memberDetail(MemberVO) MemberVO
+	//íšŒì›ìƒì„¸ë³´ê¸° -> sql.selectONe memberMapper.memberDetail(MemberVO) MemberVO
 	public void memberDetail(MemberVO vo) throws Exception;
-		
-	//È¸¿ø Á¤º¸ ¼öÁ¤ -> sql.update memberMapper.memberUpdate()
-	public void memberUpdate(MemberVO vo) throws Exception;
 	
-	//È¸¿øÅ»Åğ -> sql.delete memberMapper.memberDelete()
-	public void memberDelete(MemberVO vo) throws Exception;
+	// íšŒì›ì •ë³´ ìˆ˜ì •
+	public void memberUpdate(MemberVO vo)throws Exception;
 	
-	//ÆĞ½º¿öµå Ã¼Å© -> sql.selectOne  memberMapper.passCk()  count
+	// íšŒì› íƒˆí‡´
+	public void memberDelete(MemberVO vo)throws Exception;
+	
+	// íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
 	public int passChk(MemberVO vo) throws Exception;
 	
-	//¾ÆÀÌµğ Áßº¹Ã¼Å© -> sql.selectOne memberMapper.idChk() count
+	// ì•„ì´ë”” ì¤‘ë³µì²´í¬
 	public int idChk(MemberVO vo) throws Exception;
 }

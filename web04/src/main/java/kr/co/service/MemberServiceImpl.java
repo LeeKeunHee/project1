@@ -4,50 +4,64 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import kr.co.dao.MemberDAO;
 import kr.co.vo.MemberVO;
 
-public class MemberServiceImpl {
-	@Inject
-	private MemberDAO dao;
+@Service
+public class MemberServiceImpl implements MemberService {
 	
-	//È¸¿ø¸ñ·Ï -> sql.selectList  memberMapper.memeberList() MemberVO
-		public List<MemberVO> memberList(MemberVO vo) throws Exception {
-			return dao.memberList(vo);
-		}
+	@Inject MemberDAO dao;
+	
+    @Override
+    public List<MemberVO> memberList(MemberVO vo) throws Exception {
+        return dao.memberList(vo);
+    }
+	
+	@Override
+	public void register(MemberVO vo) throws Exception {
 		
-		//È¸¿ø°¡ÀÔ -> sql.insert  memberMapper.register
-		public void register(MemberVO vo) throws Exception {
-			dao.register(vo);
-		}
+		dao.register(vo);
 		
-		//·Î±×ÀÎ -> sql.selectOne memberMapper.login() MemberVO
-		public MemberVO login(MemberVO vo) throws Exception {
-			return dao.login(vo);
-		}
+	}
+
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		return dao.login(vo);
+	}
+	//íšŒì›ìƒì„¸ë³´ê¸° -> sql.selectONe memberMapper.memberDetail(MemberVO) MemberVO
+	public void memberDetail(MemberVO vo) throws Exception {
+		dao.memberDetail(vo);
+	}
+
+	//Controllerì—ì„œ ë³´ë‚´ëŠ” íŒŒë¼ë¯¸í„°ë“¤ì„ memberUpdate(MemberVO vo)ë¡œ ë°›ê³ 
+	@Override
+	public void memberUpdate(MemberVO vo) throws Exception {
 		
-		//È¸¿ø»ó¼¼º¸±â -> sql.selectONe memberMapper.memberDetail(MemberVO) MemberVO
-		public void memberDetail(MemberVO vo) throws Exception {
-			dao.memberDetail(vo);
-		}
-			
-		//È¸¿ø Á¤º¸ ¼öÁ¤ -> sql.update memberMapper.memberUpdate()
-		public void memberUpdate(MemberVO vo) throws Exception {
-			dao.memberUpdate(vo);
-		}
+		//ë°›ì€ voë¥¼ DAOë¡œ ë³´ë‚´ì¤ë‹ˆë‹¤.
+		dao.memberUpdate(vo);
 		
-		//È¸¿øÅ»Åğ -> sql.delete memberMapper.memberDelete()
-		public void memberDelete(MemberVO vo) throws Exception {
-			dao.memberDelete(vo);
-		}
-		
-		//ÆĞ½º¿öµå Ã¼Å© -> sql.selectOne  memberMapper.passCk()  count
-		public int passChk(MemberVO vo) throws Exception {
-			return dao.passChk(vo);
-		}
-		
-		//¾ÆÀÌµğ Áßº¹Ã¼Å© -> sql.selectOne memberMapper.idChk() count
-		public int idChk(MemberVO vo) throws Exception {
-			return dao.idChk(vo);
-		}
+	}
+	
+	// ì—…ë°ì´íŠ¸ì—ì„œ ì²˜ë¦¬í•œ ë‚´ìš©ê³¼ ê°™ìŠµë‹ˆë‹¤.
+	@Override
+	public void memberDelete(MemberVO vo) throws Exception {
+		dao.memberDelete(vo);
+	}
+
+	// íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
+	@Override
+	public int passChk(MemberVO vo) throws Exception {
+		int result = dao.passChk(vo);
+		return result;
+	}
+	
+	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬
+	@Override
+	public int idChk(MemberVO vo) throws Exception {
+		int result = dao.idChk(vo);
+		return result;
+	}
+	
 }

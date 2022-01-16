@@ -6,14 +6,14 @@ import java.net.URLEncoder;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-//ÆäÀÌÁö³»ÀÌ¼Ç¿¡¼­ ÇÑ ÆäÀÌÁö´ç ±ÛÀ» ÀúÀåÇÏ°í ´Ù·ç±â À§ÇÑ VO Å¬·¡½º
+//í˜ì´ì§€ë‚´ì´ì…˜ì—ì„œ í•œ í˜ì´ì§€ë‹¹ ê¸€ì„ ì €ì¥í•˜ê³  ë‹¤ë£¨ê¸° ìœ„í•œ VO í´ë˜ìŠ¤
 public class PageMaker {
-	private int totalCount;   //ÀüÃ¼ ±ÛÀÇ ¼ö
-	private int startPage;    //ÇöÀç Å¬¸³¿¡¼­ ½ÃÀÛ ÆäÀÌÁö ¹øÈ£
-	private int endPage;      //ÇöÀç Å¬¸³¿¡¼­ ³¡ ÆäÀÌÁö ¹øÈ£
-	private boolean prev;     //ÀÌÀü ÆäÀÌÁö ¹øÈ£(ÀÌÀü Å¬¸³¿¡¼­ÀÇ ¸¶Áö¸· ÆäÀÌÁö ¹øÈ£)
-	private boolean next;     //´ÙÀ½ ÆäÀÌÁö ¹øÈ£(´ÙÀ½ Å¬¸³¿¡¼­ÀÇ ½ÃÀÛÆäÀÌÁö ¹øÈ£)
-	private int displayPageNum = 10;  //ÇöÀç È­¸é¿¡ Ãâ·ÂµÇ´Â ÆäÀÌÁö ±ÛÀÇ ¼ö
+	private int totalCount;   //ì „ì²´ ê¸€ì˜ ìˆ˜
+	private int startPage;    //í˜„ì¬ í´ë¦½ì—ì„œ ì‹œì‘ í˜ì´ì§€ ë²ˆí˜¸
+	private int endPage;      //í˜„ì¬ í´ë¦½ì—ì„œ ë í˜ì´ì§€ ë²ˆí˜¸
+	private boolean prev;     //ì´ì „ í˜ì´ì§€ ë²ˆí˜¸(ì´ì „ í´ë¦½ì—ì„œì˜ ë§ˆì§€ë§‰ í˜ì´ì§€ ë²ˆí˜¸)
+	private boolean next;     //ë‹¤ìŒ í˜ì´ì§€ ë²ˆí˜¸(ë‹¤ìŒ í´ë¦½ì—ì„œì˜ ì‹œì‘í˜ì´ì§€ ë²ˆí˜¸)
+	private int displayPageNum = 10;  //í˜„ì¬ í™”ë©´ì— ì¶œë ¥ë˜ëŠ” í˜ì´ì§€ ê¸€ì˜ ìˆ˜
 	private Criteria cri;  // 
 	public int getTotalCount() {
 		return totalCount;
@@ -63,40 +63,40 @@ public class PageMaker {
 				+ prev + ", next=" + next + ", displayPageNum=" + displayPageNum + ", cri=" + cri + "]";
 	}
 	
-	private void calcData() { //½ÃÀÛÆäÀÌÁö, ³¡ÆäÀÌÁö, ÀüÃ¼ÆäÀÌÁö¼ö, ÀÌÀü/´ÙÀ½ ÆäÀÌÁö Á¸Àç °è»ê
-		// ÇÏ´Ü¿¡¼­ Å¬¸¯ÇÑ ÆäÀÌÁö¹øÈ£ + ÇÑ Å¬¸³ => 20 + 9 =>29 : 20~29
+	private void calcData() { //ì‹œì‘í˜ì´ì§€, ëí˜ì´ì§€, ì „ì²´í˜ì´ì§€ìˆ˜, ì´ì „/ë‹¤ìŒ í˜ì´ì§€ ì¡´ì¬ ê³„ì‚°
+		// í•˜ë‹¨ì—ì„œ í´ë¦­í•œ í˜ì´ì§€ë²ˆí˜¸ + í•œ í´ë¦½ => 20 + 9 =>29 : 20~29
 		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
-		// ÇÏ´Ü¿¡¼­ Å¬¸¯ÇÑ ÆäÀÌÁö¹øÈ£¸¦ ±¸ÇÔ => 20 + 9 => 29-10+1 => 20
+		// í•˜ë‹¨ì—ì„œ í´ë¦­í•œ í˜ì´ì§€ë²ˆí˜¸ë¥¼ êµ¬í•¨ => 20 + 9 => 29-10+1 => 20
 		startPage = (endPage - displayPageNum) +1;
 		
-		// ÀüÃ¼ ÇÊ¿äÇÑ ÆäÀÌÁö = °Ô½Ã±Û¼ö / ÇÑÆäÀÌÁö´ç °Ô½Ã±Û¼ö  => 237/10 -> 23.7 ÀÎµ¥ ¿Ã¸²ÇØ¼­ 24 
-		int tempEndPage = (int) Math.ceil(totalCount / cri.getPerPage());
-		//¸¸¾à, ÀüÃ¼ÆäÀÌÁö°¡ 24ÆäÀÌÁö±îÁö Á¸ÀçÇÑ´Ù¸é, ³¡ ÆäÀÌÁö´Â 24ÆäÀÌÁö°¡ µÇ¾î¾ß ÇÔ
+		// ì „ì²´ í•„ìš”í•œ í˜ì´ì§€ = ê²Œì‹œê¸€ìˆ˜ / í•œí˜ì´ì§€ë‹¹ ê²Œì‹œê¸€ìˆ˜  => 237/10 -> 23.7 ì¸ë° ì˜¬ë¦¼í•´ì„œ 24 
+		int tempEndPage = (int) Math.ceil(totalCount / cri.getPerPageNum());
+		//ë§Œì•½, ì „ì²´í˜ì´ì§€ê°€ 24í˜ì´ì§€ê¹Œì§€ ì¡´ì¬í•œë‹¤ë©´, ë í˜ì´ì§€ëŠ” 24í˜ì´ì§€ê°€ ë˜ì–´ì•¼ í•¨
 		if(endPage > tempEndPage) {
 			endPage = tempEndPage;
 		}
-		//ÀÌÀü ÆäÀÌÁö¿Í ´ÙÀ½ ÆäÀÌÁöÀÇ Á¸ÀçÀ¯¹« ÆÇ´Ü
+		//ì´ì „ í˜ì´ì§€ì™€ ë‹¤ìŒ í˜ì´ì§€ì˜ ì¡´ì¬ìœ ë¬´ íŒë‹¨
 		prev = startPage==1 ? false : true;
-		next = endPage * cri.getPerPage() >= totalCount ? false : true; 
+		next = endPage * cri.getPerPageNum() >= totalCount ? false : true; 
 	}
-	public String makeQuery(int page) { //°è»êµÈ ÆäÀÌÁö¸¸ ÆÄ¶ó¹ÌÅÍ¸¦ URI·Î Àü´Ş
+	public String makeQuery(int page) { //ê³„ì‚°ëœ í˜ì´ì§€ë§Œ íŒŒë¼ë¯¸í„°ë¥¼ URIë¡œ ì „ë‹¬
 		UriComponents uriComponents = UriComponentsBuilder.newInstance()
 				.queryParam("page", page)
-				.queryParam("perPageNum", cri.getPerPage())
+				.queryParam("perPageNum", cri.getPerPageNum())
 				.build();
 		return uriComponents.toUriString();
 	}
-	public String makeSearch(int page) { //ÀÔ·ÂµÈ °Ë»ö¾î¿¡ µû¸¥ °è»êµÈ ÆäÀÌÁöÀÇ ÆÄ¶ó¹ÌÅÍ¸¦ URI·Î Àü´ŞÇÏ´Â ¸Ş¼­µå
+	public String makeSearch(int page) { //ì…ë ¥ëœ ê²€ìƒ‰ì–´ì— ë”°ë¥¸ ê³„ì‚°ëœ í˜ì´ì§€ì˜ íŒŒë¼ë¯¸í„°ë¥¼ URIë¡œ ì „ë‹¬í•˜ëŠ” ë©”ì„œë“œ
 		SearchCriteria sc = new SearchCriteria();
 		UriComponents uriComponents = UriComponentsBuilder.newInstance()
 				.queryParam("page", page)
-				.queryParam("perPageNum", cri.getPerPage())
+				.queryParam("perPageNum", cri.getPerPageNum())
 				.queryParam("searchType", (sc.getSearchType()))
 				.queryParam("keyword", encoding((sc.getKeyword())))
 				.build();
 		return uriComponents.toUriString();
 	}
-	public String encoding(String keyword) { //ÇÑ±Û·Î ÀÔ·ÂµÈ °Ë»ö¾î¸¦ URIÇüÅÂÀÎ À¯´ÏÄÚµå(UTF-8)·Î ÀÎÄÚµù
+	public String encoding(String keyword) { //í•œê¸€ë¡œ ì…ë ¥ëœ ê²€ìƒ‰ì–´ë¥¼ URIí˜•íƒœì¸ ìœ ë‹ˆì½”ë“œ(UTF-8)ë¡œ ì¸ì½”ë”©
 		if(keyword == null || keyword.trim().length() == 0){
 			return "";
 		}

@@ -4,41 +4,32 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import kr.co.vo.BoardVO;
 import kr.co.vo.SearchCriteria;
 
 public interface BoardService {
-	//°Ô½Ã±Û ÀÛ¼º -> sql.insert(boardVO)
+
+	// ê²Œì‹œê¸€ ì‘ì„±
 	public void write(BoardVO boardVO, MultipartHttpServletRequest mpRequest) throws Exception;
-		
-	//°Ô½Ã¹° ¸ñ·Ï -> sql.listPage(sc) boardVO
+
+	// ê²Œì‹œë¬¼ ëª©ë¡ ì¡°íšŒ
 	public List<BoardVO> list(SearchCriteria scri) throws Exception;
-		
-	//°Ô½Ã±Û ÃÑ °¹¼ö -> sql.listCount(sc) count
+	
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 	public int listCount(SearchCriteria scri) throws Exception;
-		
-	//°Ô½Ã±Û º¸±â -> sql.read(bno) boardVO
-	public BoardVO read(int bno) throws Exception;	
-		
-	//°Ô½Ã±Û ¼öÁ¤  -> sql.update(boardVO)
-	public void update(BoardVO boardVO) throws Exception;
-		
-	//°Ô½Ã±Û »èÁ¦  -> sql.delete(bno)
-	public void delete(int bno) throws Exception; 
-		
-	//Ã·ºÎÆÄÀÏ ¾÷·Îµå -> sql.insertFile(hashMap)
-	public void insertFile(Map<String, Object> map) throws Exception;
-		
-	//Ã·ºÎÆÄÀÏ Á¶È¸  -> sql.selectFileList(bno) hashMap
+	
+	// ê²Œì‹œë¬¼ ì¡°íšŒ
+	public BoardVO read(int bno) throws Exception;
+	
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
+	public void update(BoardVO boardVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
+	
+	// ê²Œì‹œë¬¼ ì‚­ì œ
+	public void delete(int bno) throws Exception;
+	
+	// ì²¨ë¶€íŒŒì¼ ì¡°íšŒ
 	public List<Map<String, Object>> selectFileList(int bno) throws Exception;
-		
-	//Ã·ºÎÆÄÀÏ ´Ù¿î·Îµå  -> sql.selectFileInfo(hashMap) hashMap
+	
+	// ì²¨ë¶€íŒŒì¼ ë‹¤ìš´'
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
-		
-	//Ã·ºÎÆÄÀÏ ¼öÁ¤  -> sql.updateFile(hashMap)
-	public void updateFile(Map<String, Object> map) throws Exception;
-		
-	//°Ô½Ã±ÛÀÇ Á¶È¸¼ö : °Ô½Ã±Û º¸±â¸¦ ÇßÀ» °æ¿ì ÇØ´ç ±ÛÀÇ hit¸¦ Áõ°¡  -> sql.boardHit(bno)
-	public void boardHit(int bno) throws Exception;
 }

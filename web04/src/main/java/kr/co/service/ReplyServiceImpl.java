@@ -4,34 +4,42 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import kr.co.dao.ReplyDAO;
 import kr.co.vo.ReplyVO;
 
-public class ReplyServiceImpl {
+@Service
+public class ReplyServiceImpl implements ReplyService {
 	@Inject
 	private ReplyDAO dao;
 	
-	//´ñ±Û Á¶È¸ -> dao.selectList   replyMapper.readReply
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ -> dao.selectList   replyMapper.readReply
+	@Override
 	public List<ReplyVO> readReply(int bno) throws Exception {
 		return dao.readReply(bno);
 	}
 		
-	//´ñ±Û ÀÛ¼º ->  sql.insert   replyMapper.writeReply
+	//ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ ->  sql.insert   replyMapper.writeReply
+	@Override
 	public void writeReply(ReplyVO vo) throws Exception {
 		dao.writeReply(vo);
 	}
 		
-	//´ñ±Û ¼öÁ¤ ->  sql.update  replyMapper.updateReply
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ->  sql.update  replyMapper.updateReply
+	@Override
 	public void updateReply(ReplyVO vo) throws Exception {
 		dao.updateReply(vo);
 	}
 		
-	//´ñ±Û »èÁ¦ ->  sql.delete  replyMapper.deleteReply
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ->  sql.delete  replyMapper.deleteReply
+	@Override
 	public void deleteReply(ReplyVO vo) throws Exception { 
 		dao.deleteReply(vo);
 	}
 		
-	//¼±ÅÃµÈ ´ñ±Û »ó¼¼ º¸±â ->  sql.selectOne   replyMapper.selectReply
+	//ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ->  sql.selectOne   replyMapper.selectReply
+	@Override
 	public ReplyVO selectReply(int rno) throws Exception {
 		return dao.selectReply(rno);
 	}

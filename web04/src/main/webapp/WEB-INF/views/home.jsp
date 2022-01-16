@@ -1,12 +1,16 @@
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Home</title>
 </head>
 <body>
+<ul>
+	<li><a href="board/list">게시판목록</a></li>
+	<li><a href="member/register">회원목록</a></li>
+</ul>
 <h1>
-	Hello world!~~!!
+	Hello world!  
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>

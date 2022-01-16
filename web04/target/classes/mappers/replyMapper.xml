@@ -1,30 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org./dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="replyMapper">
-	<!-- 댓글 목록 -->
-	<select id="readReply" resultType="kr.co.vo.ReplyVO" parameterType="">
-		select rno, content, writer, regdate from mp_reply 
-		where bno=#{bno} 
+
+<!-- 댓글 조회 -->
+	<select id="readReply" resultType="kr.co.vo.ReplyVO">
+    	SELECT
+    		  RNO, CONTENT, WRITER, REGDATE
+    	 FROM MP_REPLY
+    	WHERE BNO = #{bno}
 	</select>
-	
-	<!-- 댓글 상세보기 -->
-	<select id="selectReply" resultType="kr.co.vo.ReplyVO">
-		SELECT bno, rno, content, writer, regdate from mp_reply 
-		where rno = #{rno}
-	</select>		  
-	
-	<!-- 댓글 추가 -->
-	<insert id="writeReply" parameterType="kr.co.vo.ReplyVO">
-		insert into mp_reply(bno, rno, content, writer) values(#{bno}, mp_reply_seq.nextval, #{content}, #{writer})
+
+<!-- 댓글 작성 -->
+	<insert id="writeReply">
+	INSERT INTO MP_REPLY(
+							  BNO
+							, RNO
+							, CONTENT
+							, WRITER
+						  				)
+				  VALUES(	 #{bno}
+				  		   , MP_REPLY_SEQ.NEXTVAL
+				  		   , #{content}
+				  		   , #{writer}	)
 	</insert>
 	
-	<!-- 댓글 수정 -->
+<!-- 댓글 수정 -->
 	<update id="updateReply" parameterType="kr.co.vo.ReplyVO">
-		update mp_reply set content=#{content} where rno=#{rno}
+		UPDATE MP_REPLY SET CONTENT = #{content}
+		WHERE RNO = #{rno}
 	</update>
-	
-	<!-- 댓글 삭제 -->
+
+<!-- 댓글 삭제 -->
 	<delete id="deleteReply" parameterType="kr.co.vo.ReplyVO">
-		delete from mp_reply where rno=#{rno}
+		DELETE FROM MP_REPLY
+		WHERE RNO = #{rno}
 	</delete>
+	
+<!-- 선택된 댓글 조회 -->
+	<select id="selectReply" resultType="kr.co.vo.ReplyVO">
+		SELECT
+				BNO
+			  , RNO
+			  , CONTENT
+			  , WRITER
+			  , REGDATE
+		  FROM MP_REPLY
+		 WHERE RNO = #{rno}
+	</select>
+	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
