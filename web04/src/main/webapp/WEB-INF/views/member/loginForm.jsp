@@ -25,19 +25,19 @@
 	</div>
 	<div class="content">
 		<h2 class="title">로그인</h2>
-		<form action="/member/login" method="post" id="regForm" name="vo">
+		<form action="login" method="post" id="regForm" name="vo">
 			<fieldset class="frm_fr">
 				<ul class="form_group has-feedback">
 					<li class="login_row">
-						<input type="text" class="form-control" id="userId" name="userId" placeholder="아이디 입력">
+						<input type="text" class="form-control" id="userid" name="userid" placeholder="아이디 입력">
 					</li> 
 					<li class="login_row">
-						<input type="password" id="userPass" name="userPass" class="form-control" maxlength="20" required />
+						<input type="password" id="userpass" name="userpass" class="form-control" maxlength="20" required />
 					</li> 
 					<li class="login_row"><br>
 						<input type="submit" class="btn btn-primary" value="로그인" id="login_submit" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button type="button" class="btn btn-primary" onclick="location.href='/member/reg.do'">회원가입</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='reg.do'">회원가입</button>
 					</li>
 				</ul>
 			</fieldset>

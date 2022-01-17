@@ -19,7 +19,7 @@
 				location.href = "/";
 			})
 			
-			function regData(f){
+			$("#submit").on("click", function(){
 				if($("#userid").val()==""){
 					alert("아이디를 입력해주세요.");
 					$("#userid").focus();
@@ -47,9 +47,9 @@
 					alert("중복확인 버튼을 눌러주세요.");
 					return false;
 				}else if(idChkVal == "Y"){
-					f.submit();
+					$("#regForm").submit();
 				}
-			}
+			});
 		});
 		
 		function fn_idChk(){
@@ -95,24 +95,24 @@
 		<%@include file="nav.jsp" %>
 	</div>
 	<div class="content">
-			<form action="/member/registery" method="post" id="regForm" name="vo" onsummit="return regData(this)">
+			<form action="/member/register" method="post" id="regForm" name="vo"  >
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userId">아이디</label>
-					<input class="form-control" type="text" id="userId" name="userId" required />
-					<button class="idChkBtn" type="button" id="idChkBtn" onclick="fn_idChk();">중복확인</button>
-					<input type="hidden" id="idChk" value="N"/>
+					<label class="control-label" for="userid">아이디</label>
+					<input class="form-control" type="text" id="userid" name="userid" required />
+					<button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+					 <input type="hidden" id="idChk" value="N"/>
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userPass">패스워드</label>
-					<input class="form-control" type="password" id="userPass" name="userPass"  required/>
+					<label class="control-label" for="userpass">패스워드</label>
+					<input class="form-control" type="password" id="userpass" name="userpass"  required/>
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userPass2">패스워드 확인</label>
-					<input class="form-control" type="password" id="userPass2" name="userPass2" required/>
+					<label class="control-label" for="userpass2">패스워드 확인</label>
+					<input class="form-control" type="password" id="userpass2" name="userpass2" required/>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userName">성명</label>
-					<input class="form-control" type="text" id="userName" name="userName" required/>
+					<input class="form-control" type="text" id="username" name="username" required/>
 				</div>
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="submit" id="submit">회원가입</button>

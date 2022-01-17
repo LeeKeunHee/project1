@@ -13,51 +13,52 @@ import kr.co.vo.MemberVO;
 public class MemberDAOImpl implements MemberDAO {
 	@Inject
 	SqlSession sql;
-	//È¸¿ø¸ñ·Ï -> sql.selectList  memberMapper.memeberList() MemberVO
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ -> sql.selectList  memberMapper.memeberList() MemberVO
 	@Override
 	public List<MemberVO> memberList(MemberVO vo) throws Exception {
 		return sql.selectList("memberMapper.memberList", vo);
 	}
 		
-	//È¸¿ø°¡ÀÔ -> sql.insert  memberMapper.register
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -> sql.insert  memberMapper.register
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		sql.insert("memberMapper.register", vo);
 	}
 		
-	//·Î±×ÀÎ -> sql.selectOne memberMapper.login() MemberVO
+	//ï¿½Î±ï¿½ï¿½ï¿½ -> sql.selectOne memberMapper.login() MemberVO
 	@Override
 	public MemberVO login(MemberVO vo) throws Exception {
 		return sql.selectOne("memberMapper.login", vo);
 	}
 		
-	//È¸¿ø»ó¼¼º¸±â -> sql.selectOne memberMapper.memberDetail(MemberVO) MemberVO
+	//È¸ï¿½ï¿½ï¿½ó¼¼ºï¿½ï¿½ï¿½ -> sql.selectOne memberMapper.memberDetail(MemberVO) MemberVO
 	@Override
 	public void memberDetail(MemberVO vo) throws Exception {
 		sql.selectOne("memeberMapper.memberDetail", vo);
 	};
 			
-	//È¸¿ø Á¤º¸ ¼öÁ¤ -> sql.update memberMapper.memberUpdate()
+	//È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> sql.update memberMapper.memberUpdate()
 	@Override
 	public void memberUpdate(MemberVO vo) throws Exception {
 		sql.update("memberMapper.memberUpdate", vo);
 	}
 		
-	//È¸¿øÅ»Åð -> sql.delete memberMapper.memberDelete()
+	//È¸ï¿½ï¿½Å»ï¿½ï¿½ -> sql.delete memberMapper.memberDelete()
 	@Override
 	public void memberDelete(MemberVO vo) throws Exception {
 		sql.delete("memberMapper.memberDelete", vo);
 	}
 		
-	//ÆÐ½º¿öµå Ã¼Å© -> sql.selectOne  memberMapper.passCk()  count
+	//ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å© -> sql.selectOne  memberMapper.passCk()  count
 	@Override
 	public int passChk(MemberVO vo) throws Exception {
 		return sql.selectOne("memberMapper.passChk", vo);
 	}
 		
-	//¾ÆÀÌµð Áßº¹Ã¼Å© -> sql.selectOne memberMapper.idChk() count
+	//ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å© -> sql.selectOne memberMapper.idChk() count
 	@Override
 	public int idChk(MemberVO vo) throws Exception {
-		return sql.selectOne("memberMapper.idChk", vo);
+		int result = sql.selectOne("memberMapper.idChk", vo);
+		return result;
 	}
 }

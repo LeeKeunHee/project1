@@ -64,15 +64,15 @@
 				<form action="/member/memberDelete" method="post" id="delForm">
 					<div class="form-group has-feedback">
 						<label class="control-label" for="userId">아이디</label>
-						<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly"/>
+						<input class="form-control" type="text" id="userid" name="userid" value="${member.userid}" readonly="readonly"/>
 					</div>
 					<div class="form-group has-feedback">
-						<label class="control-label" for="userPass">패스워드</label>
-						<input class="form-control" type="password" id="userPass" name="userPass" />
+						<label class="control-label" for="userpass">패스워드</label>
+						<input class="form-control" type="password" id="userpass" name="userpass" />
 					</div>
 					<div class="form-group has-feedback">
-						<label class="control-label" for="userName">성명</label>
-						<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}" readonly="readonly"/>
+						<label class="control-label" for="username">성명</label>
+						<input class="form-control" type="text" id="username" name="username" value="${member.username}" readonly="readonly"/>
 					</div>
 				</form>
 				<div class="form-group has-feedback">

@@ -4,13 +4,13 @@
 	li {list-style: none; display:inline; padding: 6px;}
 </style>
 <ul>
-	<li><a href="/board/list">목록</a></li>
-	<li><a href="/board/writeView">글 작성</a></li>
+	<li><a href="list">목록</a></li>
+	<li><a href="writeView">글 작성</a></li>
 	<li>
-		<c:if test="${member != null}"><a href="/member/logout">로그아웃</a></c:if>
+		<c:if test="${member != null}"><a href="../member/logout">로그아웃</a></c:if>
 		<c:if test="${member == null}">
-			<a href="./member/loginForm">로그인</a>
-			<a href="./member/register">회원가입</a>
+			<a href="../member/loginForm">로그인</a>
+			<a href="../member/register">회원가입</a>
 		</c:if>
 	</li>
 	<li>

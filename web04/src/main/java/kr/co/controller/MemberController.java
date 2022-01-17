@@ -1,15 +1,13 @@
 package kr.co.controller;
 
-import java.util.HashMap;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,29 +36,27 @@ public class MemberController {
 	}
 	
 	// 회원가입 get
-	/*
-	 * @RequestMapping(value = "/register", method = RequestMethod.GET) public void
-	 * getRegister() throws Exception { logger.info("get register"); }
-	 */
+	
+	  @RequestMapping(value = "/register", method = RequestMethod.GET) public void
+	  getRegister() throws Exception { logger.info("get register"); }
+	
 	
 	// 회원가입 post
-	@RequestMapping(value = "/registery", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String postRegister(MemberVO vo) throws Exception {
 		logger.info("post register");
-		//int result = service.idChk(vo);
-		System.out.println(vo.getUserid());
-		System.out.println(vo.getUserpass());
-		System.out.println(vo.getUsername());
+		int result = service.idChk(vo);
 		try {
-/*			if(result == 1) {
+			if(result == 1) {
 				return "/member/register";
-			} else if(result == 0) {*/
+			} else if(result == 0) {
+				
 				String inputPass = vo.getUserpass();
 				String pwd = pwdEncoder.encode(inputPass);
 				vo.setUserpass(pwd);
 				
 				service.register(vo);
-				/* } */
+				 } 
 			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
 			// 존재하지 않는다면 -> register
 		} catch (Exception e) {
@@ -81,8 +77,9 @@ public class MemberController {
 		logger.info("post login");
 		
 		session.getAttribute("member");
-		MemberVO login = service.login(vo);
 		
+
+		MemberVO login = service.login(vo);
 		boolean pwdMatch;
 		if(login != null) {
 			pwdMatch = pwdEncoder.matches(vo.getUserpass(), login.getUserpass());
@@ -164,8 +161,8 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value="/idChk", method = RequestMethod.POST)
 	public int idChk(MemberVO vo, HttpSession ses) throws Exception {
-		result = service.idChk(vo);
-		System.out.println("반환결과 : "+result);
+		int result = service.idChk(vo);
+		
 		if(result==0) {
 			ses.setAttribute("msg", "ok");
 		} else {
@@ -205,7 +202,7 @@ public class MemberController {
 	// 아이디 중복 체크 GET
 	@ResponseBody
 	@RequestMapping(value="/idChk", method = RequestMethod.GET)
-	public int idChk2(@RequestParam("userId") String userid, HttpSession ses) throws Exception {
+	public int idChk2(@RequestParam("userid") String userid, HttpSession ses) throws Exception {
 		MemberVO mem = new MemberVO(); 
 		mem.setUserid(userid);
 		result = (int) service.idChk(mem);

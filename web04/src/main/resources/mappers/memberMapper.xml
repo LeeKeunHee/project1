@@ -13,8 +13,8 @@
 	</select>
 	
 	<!-- 로그인 -->
-	<select id="login" resultType="kr.co.vo.MemberVO" >
-		select userid, userpass, username from mp_member where userid = #{userid} and userpass=#{userpass}
+	<select id="login" resultType="kr.co.vo.MemberVO" parameterType="kr.co.vo.MemberVO">
+		select userid, userpass, username from mp_member where userid = #{userid}
 	</select>
 	
 	<!-- 회원 가입 -->
@@ -41,7 +41,7 @@
 	
 	<!-- 아이디 중복 체크 -->
 	<select id="idChk" resultType="int">
-		select COUNT(*) form mp_member 
+		select COUNT(*) from mp_member 
 		where userid=#{userid}
 	</select>
 </mapper>
