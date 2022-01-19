@@ -257,3 +257,26 @@ h1.logo::after, .mois::after, #incTop2::after {content:"";clear:both;display:tab
     .searchpart #integrationsearch .close_m_search a {position:relative;display:block;width:32px;height:0;padding-top:32px;overflow:hidden;background:#fff;border-left:0;box-sizing:border-box;-webkit-box-sizing:border-box;}
     .searchpart #integrationsearch .close_m_search a:before {content:"";display:block;width:32px;height:32px;position:absolute;top:0px;left:0;border-radius:50%;background:#cacaca url(/kor/images/common/btn_search_close.png) 0 0 no-repeat;background-size:contain;}
 }
+
+/* footer */
+.dim{width:100%;height:100%;position:fixed;top:0;left:0;background:#000;opacity:0.5; z-index:1000;display:none;}
+#footer {position:relative;width:100%;max-width:1500px;height:236px;margin:0 auto;padding-bottom:20px;}
+.footer_left {float:left;width:78%;}
+.footer_logo {position:relative;float:left;display:block;width:29.37%;max-width:349px;height:236px;text-align:center;}
+.footer_logo img {width:54.6875%;max-width:175px;margin-top:46px;}
+.footer_menu {float:left;display:inline-block;width:70.63%;padding-top:45px;padding-bottom:17px;}
+.footer_menu li {float:left;padding-bottom:10px;}
+.footer_menu li a {position:relative;padding:0 12px;line-height:1em;letter-spacing:-1px;}
+.footer_menu li a strong{color:#000; text-decoration: underline;}
+.footer_menu li:not(:last-child) a::after {content:"";position:absolute;top:50%;right:0;display:block;width:1px;height:15px;margin-top:-7px;background:#cacaca;}
+.footer_menu li:first-child a {border-left:0;}
+.footer_bottom {position:relative;float:left;display:inline-block;padding:0 0 0 10px;}
+.footer_bottom address {color:#676767;font-size:16px;font-style:normal;line-height:1.6em;}
+.footer_right {float:right;width:22%;padding-top:56px;text-align:right;}
+.footer_right .open {width:27.27%;max-width:90px;}
+.footer_right .wa {width:27.87%;max-width:92px;}
+.footer_right a img {line-height:65px;vertical-align:middle;}
+.footer_right a {display:inline-block;}
+.footer_right a + a {margin-left:29px;margin-right:7px;}
+
+.footer_left::after, .footer_left .footer_menu::after, .footer_left .footer_menu li::after, .footer_bottom::after {content: "";display:table;clear:both;}
